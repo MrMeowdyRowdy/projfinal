@@ -51,7 +51,7 @@
                         name="role" required>
                         <option value="">Select role</option>
                         @foreach($roles as $role)
-                            <option value="{{ $role->id }}"
+                            <option value="{{ $role->name }}"
                                 {{ in_array($role->name, $userRole) 
                                     ? 'selected'
                                     : '' }}>{{ $role->name }}</option>
