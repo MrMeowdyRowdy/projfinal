@@ -2,26 +2,53 @@
 
 @section('content')
     <div class="bg-light p-4 rounded">
-        <h1>Show user</h1>
+        <h1>Detalles de usuario</h1>
         <div class="lead">
             
         </div>
         
-        <div class="container mt-4">
-            <div>
-                Name: {{ $user->name }}
-            </div>
-            <div>
-                Email: {{ $user->email }}
-            </div>
-            <div>
+        <section class="container mt-4">
+            <p>
+                CRID: {{ $user->id }}
+            </p>
+            <p>
+                Cédula: {{ $user->nroDocIdentificacion }}
+            </p>
+            <p>
+                Sede: {{ $user->Sede }}
+            </p>
+            <p>
+                Apellido: {{ $user->apellido }}
+            </p>
+            <p>
+                Nombre: {{ $user->name }}
+            </p>
+            <p>
+                Teléfono de contacto: {{ $user->tlfContacto }}
+            </p>
+            <p>
+                Correo: {{ $user->email }}
+            </p>
+            <p>
+                Rackspace: {{ $user->emailRackspace }}
+            </p>
+            <p>
+                Tiempo completo: {{ $user->fullTime }}
+            </p>
+            <p>
+                Categoría: {{ $user->categoria }}
+            </p>
+            <p>
+                Horario: {{ $user->horario }}
+            </p>
+            <p>
                 Username: {{ $user->username }}
-            </div>
-        </div>
+            </p>
+        </section>
 
     </div>
-    <div class="mt-4">
+    <section class="mt-4">
         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Edit</a>
         <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
-    </div>
+    </section>
 @endsection
