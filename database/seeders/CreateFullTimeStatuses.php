@@ -17,10 +17,10 @@ class CreateFullTimeStatuses extends Seeder
         $fullTime = FullTime::create([
             'fullTime' => 'Si'
         ]
-    );
-    $fullTime = FullTime::create([
-        'fullTime' => 'No'
-    ]
-);
+        );
+        $fullTime = FullTime::create([
+            'fullTime' => 'No'
+        ]
+        );
     }
 }

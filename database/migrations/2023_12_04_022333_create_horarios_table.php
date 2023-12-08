@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->time("horaInicio");
             $table->time("horaFin");
+            $table->string("detalle");
             $table->timestamps();
         });
     }

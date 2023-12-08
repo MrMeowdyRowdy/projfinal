@@ -16,19 +16,19 @@ class CategoriasController extends Controller
     {
 
     }
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
-        $categorias = Categoria::orderBy('id','DESC')->paginate(5);
-        return view('categorias.index',compact('categorias'))
+    {
+        $categorias = Categoria::orderBy('id', 'DESC')->paginate(5);
+        return view('categorias.index', compact('categorias'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +39,7 @@ class CategoriasController extends Controller
         $permissions = Permission::get();
         return view('categorias.create', compact('permissions'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,12 +52,12 @@ class CategoriasController extends Controller
             'name' => 'required|unique:categorias,name',
             'permission' => 'required',
         ]);
-    
+
         $categoria = Categoria::create(['name' => $request->get('name')]);
         $categoria->syncPermissions($request->get('permission'));
-    
+
         return redirect()->route('categorias.index')
-                        ->with('success','Categoria created successfully');
+            ->with('success', 'Categoria created successfully');
     }
 
     /**
@@ -70,10 +70,10 @@ class CategoriasController extends Controller
     {
         $categoria = $categoria;
         $categoriaPermissions = $categoria->permissions;
-    
+
         return view('categorias.show', compact('categoria', 'categoriaPermissions'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -85,10 +85,10 @@ class CategoriasController extends Controller
         $categoria = $categoria;
         $categoriaPermissions = $categoria->permissions->pluck('name')->toArray();
         $permissions = Permission::get();
-    
+
         return view('categorias.edit', compact('categoria', 'categoriaPermissions', 'permissions'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -102,13 +102,13 @@ class CategoriasController extends Controller
             'name' => 'required',
             'permission' => 'required',
         ]);
-        
+
         $categoria->update($request->only('name'));
-    
+
         $categoria->syncPermissions($request->get('permission'));
-    
+
         return redirect()->route('categorias.index')
-                        ->with('success','Categoria updated successfully');
+            ->with('success', 'Categoria updated successfully');
     }
 
     /**
@@ -122,6 +122,6 @@ class CategoriasController extends Controller
         $categoria->delete();
 
         return redirect()->route('categorias.index')
-                        ->with('success','Categoria deleted successfully');
+            ->with('success', 'Categoria deleted successfully');
     }
 }

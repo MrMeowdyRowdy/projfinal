@@ -9,6 +9,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\FullTime;
 use App\Models\Categoria;
+use App\Models\Horario;
 
 class UsersController extends Controller
 {
