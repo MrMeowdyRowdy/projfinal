@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(FullTime::class);
     }
+
+    public function categorias()
+    {
+        return $this->hasOne(Categoria::class);
+    }
+    public function horarios()
+    {
+        return $this->hasOne(Horario::class);
+    }
+
 }

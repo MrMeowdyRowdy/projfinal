@@ -86,21 +86,32 @@
                 <span class="text-danger text-left">{{ $errors->first('fullTime') }}</span>
                 @endif
             </div>
-
             <div class="mb-3">
-                <label for="caegoria" class="form-label">Categoria</label>
+                <label for="categoria" class="form-label">Categoria</label>
                 <select class="form-control" name="categoria" required>
                     <option value="">Categoria</option>
-                    @foreach($full_times as $full_time)
-                    <option value="{{ $full_time->id }}" {{ ( $full_time->id == $user->fullTime) ? 'selected' : '' }}>{{ $full_time->fullTime }}
+                    @foreach($categorias as $categoria)
+                    <option value="{{ $categoria->id }}" {{ ( $categoria->id == $user->categoria) ? 'selected' : '' }}>{{ $categoria->categoria }}
                     </option>
                     @endforeach
                 </select>
-                @if ($errors->has('fullTime'))
-                <span class="text-danger text-left">{{ $errors->first('fullTime') }}</span>
+                @if ($errors->has('categoria'))
+                <span class="text-danger text-left">{{ $errors->first('categoria') }}</span>
                 @endif
             </div>
-
+            <div class="mb-3">
+                <label for="horario" class="form-label">Horario</label>
+                <select class="form-control" name="horario" required>
+                    <option value="">Horario</option>
+                    @foreach($horarios as $horario)
+                    <option value="{{ $horario->id }}" {{ ( $horario->id == $user->horario) ? 'selected' : '' }}>{{ $horario->horario }}
+                    </option>
+                    @endforeach
+                </select>
+                @if ($errors->has('horario'))
+                <span class="text-danger text-left">{{ $errors->first('horario') }}</span>
+                @endif
+            </div>
 
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>

@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\FullTime;
+use App\Models\Categoria;
 
 class UsersController extends Controller
 {
@@ -82,7 +83,8 @@ class UsersController extends Controller
             'userRole' => $user->roles->pluck('name')->toArray(),
             'roles' => Role::latest()->get(),
             'full_times'=> FullTime::latest()->get(),
-            'categorias'=> Categoria::latest()->get()
+            'categorias'=> Categoria::latest()->get(),
+            'horarios'=> Horario::latest()->get(),
         ]);
     }
     /**
