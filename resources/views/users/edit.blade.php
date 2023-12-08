@@ -104,8 +104,7 @@
                 <select class="form-control" name="horario" required>
                     <option value="">Horario</option>
                     @foreach($horarios as $horario)
-                    <option value="{{ $horario->id }}" {{ ( $horario->id == $user->horario) ? 'selected' : '' }}>{{ $horario->horario }}
-                    </option>
+                    <option value="{{ $horario->id }}" {{  $horario->id == $user->horario ? 'selected' : '' }}>{{ $horario->detalle }}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('horario'))
