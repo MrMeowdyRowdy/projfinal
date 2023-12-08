@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\FullTime;
 
 class UsersController extends Controller
 {
@@ -75,13 +76,15 @@ class UsersController extends Controller
      */
     public function edit(User $user) 
     {
+
         return view('users.edit', [
             'user' => $user,
             'userRole' => $user->roles->pluck('name')->toArray(),
-            'roles' => Role::latest()->get()
+            'roles' => Role::latest()->get(),
+            'full_times'=> FullTime::latest()->get(),
+            'categorias'=> Categoria::latest()->get()
         ]);
     }
-
     /**
      * Update user data
      * 

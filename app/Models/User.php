@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function full_times()
+    {
+        return $this->hasOne(FullTime::class);
+    }
 }

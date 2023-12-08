@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string("tlfContacto")->nullable();
             $table->string('email')->unique()->nullable();
             $table->string("emailRackspace")->unique()->nullable();
-            $table->string("fullTime")->nullable();
-            $table->string("categoria")->nullable();
+            $table->integer("fullTime")->nullable();
+            $table->integer("categoria")->nullable();
             $table->integer("horario")->nullable();
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
