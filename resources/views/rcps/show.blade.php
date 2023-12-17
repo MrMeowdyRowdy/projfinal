@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="bg-light p-4 rounded">
-        <h1>Detalles de usuario</h1>
+        <h1>Detalles de RCP</h1>
         <div class="lead">
             
         </div>
         
         <section class="container mt-4">
             <p>
-                Llamada ID: {{ $rcp->horaInicio }}
+                Llamada ID: {{ $rcp->llamadaID }}
             </p>
             <p>
                 Interpreter ID: {{ $rcp->interpreterID }}

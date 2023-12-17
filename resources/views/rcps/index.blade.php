@@ -7,7 +7,7 @@
     <div class="bg-light p-4 rounded">
         <h1>Report Call Problem</h1>
         <div class="lead">
-            Reporta distintos problemas que peudan surgir durante llamadas.
+            Reporta distintos problemas que puedan surgir durante llamadas.
             <a href="{{ route('rcps.create') }}" class="btn btn-primary btn-sm float-right">Crear </a>
         </div>
         
@@ -26,7 +26,9 @@
             @foreach ($rcps as $key => $rcp)
             <tr>
                 <td>{{ $rcp->id }}</td>
-                <td>{{ $rcp->name }}</td>
+                <td>{{ $rcp->llamadaID }}</td>
+                <td>{{ $rcp->interpreterID }}</td>
+                <td>{{ $rcp->tipo}}</td>
                 <td>
                     <a class="btn btn-info btn-sm" href="{{ route('rcps.show', $rcp->id) }}">Detalles</a>
                 </td>

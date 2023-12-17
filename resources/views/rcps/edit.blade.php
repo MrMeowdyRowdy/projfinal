@@ -8,7 +8,7 @@
     </div>
 
     <div class="container mt-4">
-    <form method="POST" action="{{ route('rcpss.update', $rcp->id) }}">
+    <form method="POST" action="{{ route('rcps.update', $rcp->id) }}">
                 @method('patch')
             @csrf
             <div class="mb-3">
