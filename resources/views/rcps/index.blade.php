@@ -8,7 +8,7 @@
         <h1>Report Call Problem</h1>
         <div class="lead">
             Reporta distintos problemas que peudan surgir durante llamadas.
-            <a href="{{ route('rpcs.create') }}" class="btn btn-primary btn-sm float-right">Crear </a>
+            <a href="{{ route('rcps.create') }}" class="btn btn-primary btn-sm float-right">Crear </a>
         </div>
         
         <div class="mt-2">

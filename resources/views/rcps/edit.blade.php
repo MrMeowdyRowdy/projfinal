@@ -37,6 +37,14 @@
                 <span class="text-danger text-left">{{ $errors->first('tipo') }}</span>
                 @endif
             </div>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Comentarios</label>
+                <input value="{{ $llamada->mensaje }}" type="text" class="form-control" name="mensaje"
+                    placeholder="Explica lo ocurrido" required>
+                @if ($errors->has('mensaje'))
+                <span class="text-danger text-left">{{ $errors->first('mensaje') }}</span>
+                @endif
+            </div>
             
 
             <button type="submit" class="btn btn-primary">Reportar Llamada</button>

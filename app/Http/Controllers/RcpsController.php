@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRCPRequest;
 use App\Http\Requests\UpdateRCPRequest;
-use App\Models\RCP;
+use App\Models\Rcp;
 
-class RcpController extends Controller
+class RcpsController extends Controller
 {
      /**
      * Display all rcps
