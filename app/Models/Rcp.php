@@ -21,6 +21,4 @@ class RCP extends Model
     public function llamada(){
         return $this->belongsTo(Llamada::class,'id');
     }
-
-
 }
