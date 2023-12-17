@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreLlamadaRequest;
 use App\Models\Llamada;
 
 class LlamadasController extends Controller
@@ -74,7 +75,9 @@ class LlamadasController extends Controller
     public function edit(Llamada $llamada) 
     {
 
-        return view('llamadas.edit');
+        return view('llamadas.edit', [
+            'llamada' => $llamada])
+        ;
     }
     /**
      * Update llamada data

@@ -78,7 +78,8 @@
                 <select class="form-control" name="fullTime" required>
                     <option value="">Empleado a tiempo completo</option>
                     @foreach($full_times as $full_time)
-                    <option value="{{ $full_time->id }}" {{ ( $full_time->id == $user->fullTime) ? 'selected' : '' }}>{{ $full_time->fullTime }}
+                    <option value="{{ $full_time->id }}" {{ ( $full_time->id == $user->fullTime) ? 'selected' : '' }}>{{
+                        $full_time->fullTime }}
                     </option>
                     @endforeach
                 </select>
@@ -91,7 +92,8 @@
                 <select class="form-control" name="categoria" required>
                     <option value="">Categoria</option>
                     @foreach($categorias as $categoria)
-                    <option value="{{ $categoria->id }}" {{ ( $categoria->id == $user->categoria) ? 'selected' : '' }}>{{ $categoria->categoria }}
+                    <option value="{{ $categoria->id }}" {{ ( $categoria->id == $user->categoria) ? 'selected' : ''
+                        }}>{{ $categoria->categoria }}
                     </option>
                     @endforeach
                 </select>
@@ -104,7 +106,8 @@
                 <select class="form-control" name="horario" required>
                     <option value="">Horario</option>
                     @foreach($horarios as $horario)
-                    <option value="{{ $horario->id }}" {{  $horario->id == $user->horario ? 'selected' : '' }}>{{ $horario->detalle }}</option>
+                    <option value="{{ $horario->id }}" {{ $horario->id == $user->horario ? 'selected' : '' }}>{{
+                        $horario->detalle }}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('horario'))
