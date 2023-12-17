@@ -52,7 +52,7 @@ class UsersController extends Controller
         ]));
 
         return redirect()->route('users.index')
-            ->withSuccess(__('User created successfully.'));
+            ->withSuccess(__('Usuario creado correctamente.'));
     }
 
     /**
@@ -102,7 +102,7 @@ class UsersController extends Controller
         $user->syncRoles($request->get('role'));
 
         return redirect()->route('users.index')
-            ->withSuccess(__('User updated successfully.'));
+            ->withSuccess(__('Usuario actualizado correctamente.'));
     }
 
     /**
@@ -117,6 +117,6 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')
-            ->withSuccess(__('User deleted successfully.'));
+            ->withSuccess(__('Usuario eliminado correctamente.'));
     }
 }

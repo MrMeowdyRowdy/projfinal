@@ -47,7 +47,7 @@ class LlamadasController extends Controller
         ]));
 
         return redirect()->route('llamadas.index')
-            ->withSuccess(__('Llamada created successfully.'));
+            ->withSuccess(__('Llamada registrada correctamente.'));
     }
 
     /**
@@ -74,14 +74,7 @@ class LlamadasController extends Controller
     public function edit(Llamada $llamada) 
     {
 
-        return view('llamadas.edit', [
-            'llamada' => $llamada,
-            'llamadaRole' => $llamada->roles->pluck('name')->toArray(),
-            'roles' => Role::latest()->get(),
-            'full_times'=> FullTime::latest()->get(),
-            'categorias'=> Categoria::latest()->get(),
-            'horarios'=> Horario::latest()->get(),
-        ]);
+        return view('llamadas.edit');
     }
     /**
      * Update llamada data

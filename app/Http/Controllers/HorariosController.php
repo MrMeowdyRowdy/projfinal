@@ -57,7 +57,7 @@ class HorariosController extends Controller
         $horario->syncPermissions($request->get('permission'));
     
         return redirect()->route('horarios.index')
-                        ->with('success','Horario created successfully');
+                        ->with('success','Horario creado correctamente');
     }
 
     /**
@@ -108,7 +108,7 @@ class HorariosController extends Controller
         $horario->syncPermissions($request->get('permission'));
     
         return redirect()->route('horarios.index')
-                        ->with('success','Horario updated successfully');
+                        ->with('success','Horario actualizado correctamente');
     }
 
     /**
@@ -122,6 +122,6 @@ class HorariosController extends Controller
         $horario->delete();
 
         return redirect()->route('horarios.index')
-                        ->with('success','Horario deleted successfully');
+                        ->with('success','Horario eliminado correctamente');
     }
 }
