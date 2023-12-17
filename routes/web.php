@@ -57,14 +57,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * User Routes
          */
-        Route::group(['prefix' => 'posts'], function() {
-            Route::get('/', 'PostsController@index')->name('posts.index');
-            Route::get('/create', 'PostsController@create')->name('posts.create');
-            Route::post('/create', 'PostsController@store')->name('posts.store');
-            Route::get('/{post}/show', 'PostsController@show')->name('posts.show');
-            Route::get('/{post}/edit', 'PostsController@edit')->name('posts.edit');
-            Route::patch('/{post}/update', 'PostsController@update')->name('posts.update');
-            Route::delete('/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
+        Route::group(['prefix' => 'llamadas'], function() {
+            Route::get('/', 'LlamadasController@index')->name('llamadas.index');
+            Route::get('/create', 'LlamadasController@create')->name('llamadas.create');
+            Route::post('/create', 'LlamadasController@store')->name('llamadas.store');
+            Route::get('/{llamada}/show', 'LlamadasController@show')->name('llamadas.show');
+            Route::get('/{llamada}/edit', 'LlamadasController@edit')->name('llamadas.edit');
+            Route::patch('/{llamada}/update', 'LlamadasController@update')->name('llamadas.update');
+            Route::delete('/{llamada}/delete', 'LlamadasController@destroy')->name('llamadas.destroy');
         });
 
         Route::resource('roles', RolesController::class);
