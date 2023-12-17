@@ -9,46 +9,34 @@
         
         <section class="container mt-4">
             <p>
-                CRID: {{ $user->id }}
+                Interpreter ID: {{ $llamada->interpreterID }}
             </p>
             <p>
-                Cédula: {{ $user->nroDocIdentificacion }}
+                Hora Inicio: {{ $llamada->horaInicio }}
             </p>
             <p>
-                Sede: {{ $user->Sede }}
+                Hora Fin: {{ $llamada->horaFin }}
             </p>
             <p>
-                Apellido: {{ $user->apellido }}
+                Cliente: {{ $llamada->empresaCliente }}
             </p>
             <p>
-                Nombre: {{ $user->name }}
+                Proveedor: {{ $llamada->proveedor }}
             </p>
             <p>
-                Teléfono de contacto: {{ $user->tlfContacto }}
+                Lengua LEP: {{ $llamada->lenguaLEP }}
             </p>
             <p>
-                Correo: {{ $user->email }}
-            </p>
+                Tipo: {{ $llamada->tipo }}
+            </p>            
             <p>
-                Rackspace: {{ $user->emailRackspace }}
-            </p>
-            <p>
-                Tiempo completo: {{ $user->fullTime }}
-            </p>
-            <p>
-                Categoría: {{ $user->categoria }}
-            </p>
-            <p>
-                Horario: {{ $user->horario }}
-            </p>
-            <p>
-                Username: {{ $user->username }}
+                Especializacion: {{ $llamada->especializacion }}
             </p>
         </section>
 
     </div>
     <section class="mt-4">
-        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Edit</a>
-        <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
+        <a href="{{ route('llamadas.edit', $llamada->id) }}" class="btn btn-info">Editar</a>
+        <a href="{{ route('llamadas.index') }}" class="btn btn-default">Atrás</a>
     </section>
 @endsection
