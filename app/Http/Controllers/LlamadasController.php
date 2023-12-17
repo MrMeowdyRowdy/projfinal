@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLlamadaRequest;
+use App\Http\Requests\UpdateLlamadaRequest;
 use App\Models\Llamada;
+use Spatie\Permission\Models\Role;
 
 class LlamadasController extends Controller
 {
@@ -90,7 +92,6 @@ class LlamadasController extends Controller
     public function update(Llamada $llamada, UpdateLlamadaRequest $request) 
     {
         $llamada->update($request->validated());
-        $llamada->syncRoles($request->get('role'));
 
         return redirect()->route('llamadas.index')
             ->withSuccess(__('Llamada actualizada correctamente.'));
