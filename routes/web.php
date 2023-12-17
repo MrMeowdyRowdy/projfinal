@@ -55,7 +55,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         });
 
         /**
-         * User Routes
+         * llamadas Routes
          */
         Route::group(['prefix' => 'llamadas'], function() {
             Route::get('/', 'LlamadasController@index')->name('llamadas.index');
@@ -65,6 +65,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/{llamada}/edit', 'LlamadasController@edit')->name('llamadas.edit');
             Route::patch('/{llamada}/update', 'LlamadasController@update')->name('llamadas.update');
             Route::delete('/{llamada}/delete', 'LlamadasController@destroy')->name('llamadas.destroy');
+        });
+        /**
+         * rcps Routes
+         */
+        Route::group(['prefix' => 'rcps'], function() {
+            Route::get('/', 'RcpsController@index')->name('rcps.index');
+            Route::get('/create', 'RcpsController@create')->name('rcps.create');
+            Route::post('/create', 'RcpsController@store')->name('rcps.store');
+            Route::get('/{rcp}/show', 'RcpsController@show')->name('rcps.show');
+            Route::get('/{rcp}/edit', 'RcpsController@edit')->name('rcps.edit');
+            Route::patch('/{rcp}/update', 'RcpsController@update')->name('rcps.update');
+            Route::delete('/{rcp}/delete', 'RcpsController@destroy')->name('rcps.destroy');
         });
 
         Route::resource('roles', RolesController::class);
