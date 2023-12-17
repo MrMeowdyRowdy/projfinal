@@ -78,6 +78,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::patch('/{rcp}/update', 'RcpsController@update')->name('rcps.update');
             Route::delete('/{rcp}/delete', 'RcpsController@destroy')->name('rcps.destroy');
         });
+        /**
+         * horarios Routes
+         */
+        Route::group(['prefix' => 'horarios'], function() {
+            Route::get('/', 'HorariosController@index')->name('horarios.index');
+            Route::get('/create', 'HorariosController@create')->name('horarios.create');
+            Route::post('/create', 'HorariosController@store')->name('horarios.store');
+            Route::get('/{horario}/show', 'HorariosController@show')->name('horarios.show');
+            Route::get('/{horario}/edit', 'HorariosController@edit')->name('horarios.edit');
+            Route::patch('/{horario}/update', 'HorariosController@update')->name('horarios.update');
+            Route::delete('/{horario}/delete', 'HorariosController@destroy')->name('horarios.destroy');
+        });
 
         Route::resource('roles', RolesController::class);
         Route::resource('permissions', PermissionsController::class);

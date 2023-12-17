@@ -29,7 +29,7 @@
             <div class="mb-3">
                 <label for="detalle" class="form-label">Detalle</label>
                 <input value="{{ old('detalle') }}" type="text" class="form-control" name="detalle"
-                    placeholder="SPA" required>
+                    placeholder="Ingrese las horas a manera de texto" required>
                 @if ($errors->has('detalle'))
                 <span class="text-danger text-left">{{ $errors->first('detalle') }}</span>
                 @endif

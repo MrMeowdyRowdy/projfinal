@@ -10,7 +10,8 @@ class Horario extends Model
     use HasFactory;
     protected $fillable = [
         'horaInicio',
-        'horaFin'
+        'horaFin',
+        'detalle'
     ];
 
     public function course()

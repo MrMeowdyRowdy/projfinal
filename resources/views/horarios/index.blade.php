@@ -24,6 +24,7 @@
           </tr>
             @foreach ($horarios as $key => $horario)
             <tr>
+                <td>{{ $horario->id }}</td>
                 <td>{{ $horario->horaInicio }}</td>
                 <td>{{ $horario->horaFin }}</td>
                 <td>
