@@ -54,7 +54,7 @@
                 <select class="form-control" name="proveedor" required>
                     <option value="">Elija la empresa bajo la cual has prestado el servicio</option>
                     @foreach($proveedors as $proveedor)
-                    <option value="{{ $proveedor->id }}" {{ ( $proveedor->id == $llamada->proveedor) ? 'selected' : '' }}>{{
+                    <option value="{{ $proveedor->id }}">{{
                         $proveedor->nombre }}
                     </option>
                     @endforeach
@@ -64,23 +64,15 @@
                 @endif
             </div>
             <div class="mb-3">
-                <label for="lenguaLEP" class="form-label">Proveedor</label>
+                <label for="lenguaLEP" class="form-label">Lengua del LEP</label>
                 <select class="form-control" name="lenguaLEP" required>
-                    <option value="">Elija la empresa bajo la cual has prestado el servicio</option>
+                    <option value="">Elige el lenguaje del LEP</option>
                     @foreach($lenguaLEPs as $lenguaLEP)
-                    <option value="{{ $lenguaLEP->id }}" {{ ( $lenguaLEP->id == $llamada->lenguaLEP) ? 'selected' : '' }}>{{
-                        $lenguaLEP->nombre }}
+                    <option value="{{ $lenguaLEP->id }}" >{{
+                        $lenguaLEP->lengua }}
                     </option>
                     @endforeach
                 </select>
-                @if ($errors->has('lenguaLEP'))
-                <span class="text-danger text-left">{{ $errors->first('lenguaLEP') }}</span>
-                @endif
-            </div>
-            <div class="mb-3">
-                <label for="lenguaLEP" class="form-label">Lengua LEP</label>
-                <input value="{{ old('lenguaLEP') }}" type="text" class="form-control" name="lenguaLEP"
-                    placeholder="SPA" required>
                 @if ($errors->has('lenguaLEP'))
                 <span class="text-danger text-left">{{ $errors->first('lenguaLEP') }}</span>
                 @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\LenguaLEP;
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLlamadaRequest;
@@ -35,7 +36,7 @@ class LlamadasController extends Controller
         return view('llamadas.create', [
             'empresa_clientes' => EmpresaCliente::latest()->get(),
             'proveedors' => Proveedor::latest()->get(),
-
+            'lenguaLEPs' => LenguaLEP::latest()->get()
         ]);
     }
 
@@ -85,6 +86,7 @@ class LlamadasController extends Controller
             'llamada' => $llamada,
             'empresa_clientes' => EmpresaCliente::latest()->get(),
             'proveedors' => Proveedor::latest()->get(),
+            'lenguaLEPs' => LenguaLEP::latest()->get()
         ]);
     }
     /**

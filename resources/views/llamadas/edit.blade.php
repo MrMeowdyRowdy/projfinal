@@ -65,9 +65,15 @@
                 @endif
             </div>
             <div class="mb-3">
-                <label for="lenguaLEP" class="form-label">Lengua LEP</label>
-                <input value="{{ $llamada->lenguaLEP }}" type="text" class="form-control" name="lenguaLEP"
-                    placeholder="SPA" required>
+                <label for="lenguaLEP" class="form-label">Lengua del LEP</label>
+                <select class="form-control" name="lenguaLEP" required>
+                    <option value="">Elige el lenguaje del LEP</option>
+                    @foreach($lenguaLEPs as $lenguaLEP)
+                    <option value="{{ $lenguaLEP->id }}" {{ ( $lenguaLEP->id == $llamada->lenguaLEP) ? 'selected' : '' }}>{{
+                        $lenguaLEP->nombre }}
+                    </option>
+                    @endforeach
+                </select>
                 @if ($errors->has('lenguaLEP'))
                 <span class="text-danger text-left">{{ $errors->first('lenguaLEP') }}</span>
                 @endif
