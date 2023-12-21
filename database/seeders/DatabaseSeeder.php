@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateProveedores::class);
         $this->call(CreateLenguaLEP::class);
         $this->call(CreateTipos::class);
+        $this->call(CreateTipoRcps::class);
     }
 }

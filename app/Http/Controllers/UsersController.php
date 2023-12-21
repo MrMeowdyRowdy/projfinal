@@ -32,7 +32,12 @@ class UsersController extends Controller
      */
     public function create() 
     {
-        return view('users.create');
+        return view('users.create',[
+            'roles' => Role::latest()->get(),
+            'full_times'=> FullTime::latest()->get(),
+            'categorias'=> Categoria::latest()->get(),
+            'horarios'=> Horario::latest()->get(),
+        ]);
     }
 
     /**

@@ -11,8 +11,35 @@
         <form method="POST" action="">
             @csrf
             <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input value="{{ old('name') }}" type="text" class="form-control" name="name" placeholder="Name"
+                <label for="nroDocIdentificacion" class="form-label">Cédula</label>
+                <input value="{{ old('nroDocIdentificacion') }}" type="text" class="form-control" name="name"
+                    placeholder="1700000000" required>
+
+                @if ($errors->has('nroDocIdentificacion'))
+                <span class="text-danger text-left">{{ $errors->first('nroDocIdentificacion') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="sede" class="form-label">Sede</label>
+                <input value="{{ old('sede') }}" type="text" class="form-control" name="sede" placeholder="ECU"
+                    required>
+
+                @if ($errors->has('sede'))
+                <span class="text-danger text-left">{{ $errors->first('sede') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input value="{{ old('apellido') }}" type="text" class="form-control" name="apellido"
+                    placeholder="Apellido" required>
+
+                @if ($errors->has('apellido'))
+                <span class="text-danger text-left">{{ $errors->first('apellido') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input value="{{ old('name') }}" type="text" class="form-control" name="name" placeholder="Nombre"
                     required>
 
                 @if ($errors->has('name'))
@@ -20,19 +47,89 @@
                 @endif
             </div>
             <div class="mb-3">
+                <label for="tlfContacto" class="form-label">Teléfono</label>
+                <input value="{{ old('tlfContacto') }}" type="text" class="form-control" name="tlfContacto"
+                    placeholder="0900000000" required>
+
+                @if ($errors->has('tlfContacto'))
+                <span class="text-danger text-left">{{ $errors->first('tlfContacto') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input value="{{ old('email') }}" type="email" class="form-control" name="email"
-                    placeholder="Email address" required>
+                    placeholder="john@doe.com" required>
                 @if ($errors->has('email'))
                 <span class="text-danger text-left">{{ $errors->first('email') }}</span>
                 @endif
             </div>
+            <div class="mb-3">
+                <label for="emailRackspace" class="form-label">Email Rackspace</label>
+                <input value="{{ old('emailRackspace') }}" type="email" class="form-control" name="emailRackspace"
+                    placeholder="john@doe.com" required>
+                @if ($errors->has('emailRackspace'))
+                <span class="text-danger text-left">{{ $errors->first('emailRackspace') }}</span>
+                @endif
+            </div>
+
+            <div class="mb-3">
+                <label for="fullTime" class="form-label">Tipo de empleo</label>
+                <select class="form-control" name="fullTime" required>
+                    <option value="">Empleado a tiempo completo</option>
+                    @foreach($full_times as $full_time)
+                    <option value="{{ old('fullTime') }}">{{
+                        $full_time->fullTime }}
+                    </option>
+                    @endforeach
+                </select>
+                @if ($errors->has('fullTime'))
+                <span class="text-danger text-left">{{ $errors->first('fullTime') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoria</label>
+                <select class="form-control" name="categoria" required>
+                    <option value="">Categoria</option>
+                    @foreach($categorias as $categoria)
+                    <option value="{{ $categoria->categoria }}">{{ $categoria->categoria }}
+                    </option>
+                    @endforeach
+                </select>
+                @if ($errors->has('categoria'))
+                <span class="text-danger text-left">{{ $errors->first('categoria') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="horario" class="form-label">Horario</label>
+                <select class="form-control" name="horario" required>
+                    <option value="">Horario</option>
+                    @foreach($horarios as $horario)
+                    <option value="{{ $horario->detalle }}">{{ $horario->detalle }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('horario'))
+                <span class="text-danger text-left">{{ $errors->first('horario') }}</span>
+                @endif
+            </div>
+
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input value="{{ old('username') }}" type="text" class="form-control" name="username"
                     placeholder="Username" required>
                 @if ($errors->has('username'))
                 <span class="text-danger text-left">{{ $errors->first('username') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-control" name="role" required>
+                    <option value="">Select role</option>
+                    @foreach($roles as $role)
+                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('role'))
+                <span class="text-danger text-left">{{ $errors->first('role') }}</span>
                 @endif
             </div>
 
