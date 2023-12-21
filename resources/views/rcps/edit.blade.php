@@ -13,7 +13,7 @@
             @csrf
             <div class="mb-3">
                 <label for="llamadaID" class="form-label">ID de la Llamada</label>
-                <input value="{{ $llamada->llamadaID }}" type="number" class="form-control" name="llamadaID"
+                <input value="{{ $rcp->llamadaID }}" type="number" class="form-control" name="llamadaID"
                     placeholder="Id de la Llamada" required>
 
                 @if ($errors->has('llamadaID'))
@@ -21,25 +21,22 @@
                 @endif
             </div>
             <div class="mb-3">
-                <label for="interpreterID" class="form-label">Interpreter ID</label>
-                <input value="{{ $llamada->interpreterID }}" type="number" class="form-control" name="interpreterID"
-                    placeholder="3XXXXX" required>
-
-                @if ($errors->has('interpreterID'))
-                <span class="text-danger text-left">{{ $errors->first('interpreterID') }}</span>
-                @endif
-            </div>
-            <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo de problema</label>
-                <input value="{{ $llamada->tipo }}" type="text" class="form-control" name="tipo"
-                    placeholder="" required>
-                @if ($errors->has('tipoempresaCliente'))
+                <select class="form-control" name="tipo" required>
+                    <option value="">Elige el tipoRcp de llamada atendida</option>
+                    @foreach($tipoRcps as $tipoRcp)
+                    <option value="{{ $tipoRcp->tipo }}" {{ ( $tipoRcp->tipo == $rcp->tipo) ? 'selected' : '' }}>{{
+                        $tipoRcp->tipo }}
+                    </option>
+                    @endforeach
+                </select>
+                @if ($errors->has('tipo'))
                 <span class="text-danger text-left">{{ $errors->first('tipo') }}</span>
                 @endif
             </div>
             <div class="mb-3">
                 <label for="tipo" class="form-label">Comentarios</label>
-                <input value="{{ $llamada->mensaje }}" type="text" class="form-control" name="mensaje"
+                <input value="{{ $rcp->mensaje }}" type="text" class="form-control" name="mensaje"
                     placeholder="Explica lo ocurrido" required>
                 @if ($errors->has('mensaje'))
                 <span class="text-danger text-left">{{ $errors->first('mensaje') }}</span>

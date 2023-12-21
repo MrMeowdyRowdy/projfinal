@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer("interpreterID");
             $table->integer("llamadaID");
-            $table->integer("tipo");
+            $table->string("tipo");
             $table->string('mensaje')->nullable();
             $table->timestamps();
         });

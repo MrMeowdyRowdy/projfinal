@@ -10,6 +10,8 @@ class Rcp extends Model
     use HasFactory;
 
     protected $fillable = [
+        'interpreterID',
+        'llamadaID',
         'tipo',
         'mensaje'
     ];

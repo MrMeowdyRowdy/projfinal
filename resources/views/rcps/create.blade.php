@@ -20,19 +20,16 @@
                 @endif
             </div>
             <div class="mb-3">
-                <label for="interpreterID" class="form-label">Interpreter ID</label>
-                <input value="{{ old('interpreterID') }}" type="number" class="form-control" name="interpreterID"
-                    placeholder="3XXXXX" required>
-
-                @if ($errors->has('interpreterID'))
-                <span class="text-danger text-left">{{ $errors->first('interpreterID') }}</span>
-                @endif
-            </div>
-            <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo de problema</label>
-                <input value="{{ old('tipo') }}" type="text" class="form-control" name="tipo"
-                    placeholder="" required>
-                @if ($errors->has('tipoempresaCliente'))
+                <select class="form-control" name="tipo" required>
+                    <option value="">Elige el tipo de problema de llamada atendida</option>
+                    @foreach($tipoRcps as $tipoRcp)
+                    <option value="{{ $tipoRcp->tipo }}">{{
+                        $tipoRcp->tipo }}
+                    </option>
+                    @endforeach
+                </select>
+                @if ($errors->has('tipo'))
                 <span class="text-danger text-left">{{ $errors->first('tipo') }}</span>
                 @endif
             </div>
@@ -44,7 +41,7 @@
                 <span class="text-danger text-left">{{ $errors->first('mensaje') }}</span>
                 @endif
             </div>
-            
+
 
             <button type="submit" class="btn btn-primary">Reportar Llamada</button>
             <a href="{{ route('rcps.index') }}" class="btn btn-default">Atrás</a>

@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipoRcp;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreRcpRequest;
-use App\Http\Requests\UpdateRcpRequest;
+use App\Http\Requests\StoreRCPRequest;
+use App\Http\Requests\UpdateRCPRequest;
 use App\Models\Rcp;
 
 class RcpsController extends Controller
 {
-     /**
+    /**
      * Display all rcps
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $rcps = Rcp::latest()->paginate(10);
 
@@ -26,9 +27,11 @@ class RcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
-        return view('rcps.create');
+        return view('rcps.create', [
+            'tipoRcps' => TipoRcp::latest()->get()
+        ]);
     }
 
     /**
@@ -39,11 +42,14 @@ class RcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(Rcp $rcp, StoreRcpRequest $request) 
+    public function store(Rcp $rcp, StoreRcpRequest $request)
     {
         //For demo purposes only. When creating rcp or inviting a rcp
         // you should create a generated random password and email it to the rcp
-        $rcp->create(array_merge($request->validated()));
+        Rcp::create(array_merge($request->only('llamadaID', 'tipo', 'mensaje'), [
+            'interpreterID' => auth()->id()
+        ]));
+        
 
         return redirect()->route('rcps.index')
             ->withSuccess(__('Rcp registrada correctamente.'));
@@ -56,7 +62,7 @@ class RcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(Rcp $rcp) 
+    public function show(Rcp $rcp)
     {
         return view('rcps.show', [
             'rcp' => $rcp
@@ -70,11 +76,12 @@ class RcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rcp $rcp) 
+    public function edit(Rcp $rcp)
     {
 
         return view('rcps.edit', [
-            'rcp' => $rcp])
+            'rcp' => $rcp,
+            'tipoRcps' => TipoRcp::latest()->get()])
         ;
     }
     /**
@@ -85,7 +92,7 @@ class RcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(Rcp $rcp, UpdateRcpRequest $request) 
+    public function update(Rcp $rcp, UpdateRcpRequest $request)
     {
         $rcp->update($request->validated());
 
@@ -100,7 +107,7 @@ class RcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rcp $rcp) 
+    public function destroy(Rcp $rcp)
     {
         $rcp->delete();
 
