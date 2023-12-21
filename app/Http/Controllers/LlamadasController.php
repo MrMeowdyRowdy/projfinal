@@ -8,15 +8,16 @@ use App\Http\Requests\StoreLlamadaRequest;
 use App\Http\Requests\UpdateLlamadaRequest;
 use App\Models\Llamada;
 use Spatie\Permission\Models\Role;
+use App\Models\EmpresaCliente;
 
 class LlamadasController extends Controller
 {
-     /**
+    /**
      * Display all llamadas
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $llamadas = Llamada::latest()->paginate(10);
 
@@ -28,9 +29,11 @@ class LlamadasController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
-        return view('llamadas.create');
+        return view('llamadas.create', [
+            'empresa_clientes' => EmpresaCliente::latest()->get()
+        ]);
     }
 
     /**
@@ -41,13 +44,11 @@ class LlamadasController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(Llamada $llamada, StoreLlamadaRequest $request) 
+    public function store(Llamada $llamada, StoreLlamadaRequest $request)
     {
         //For demo purposes only. When creating llamada or inviting a llamada
         // you should create a generated random password and email it to the llamada
-        $llamada->create(array_merge($request->validated(), [
-            'password' => 'test' 
-        ]));
+        $llamada->create(array_merge($request->validated()));
 
         return redirect()->route('llamadas.index')
             ->withSuccess(__('Llamada registrada correctamente.'));
@@ -60,7 +61,7 @@ class LlamadasController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(Llamada $llamada) 
+    public function show(Llamada $llamada)
     {
         return view('llamadas.show', [
             'llamada' => $llamada
@@ -74,12 +75,11 @@ class LlamadasController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Llamada $llamada) 
+    public function edit(Llamada $llamada)
     {
 
         return view('llamadas.edit', [
-            'llamada' => $llamada])
-        ;
+            'llamada' => $llamada]);
     }
     /**
      * Update llamada data
@@ -89,7 +89,7 @@ class LlamadasController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(Llamada $llamada, UpdateLlamadaRequest $request) 
+    public function update(Llamada $llamada, UpdateLlamadaRequest $request)
     {
         $llamada->update($request->validated());
 
@@ -104,7 +104,7 @@ class LlamadasController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Llamada $llamada) 
+    public function destroy(Llamada $llamada)
     {
         $llamada->delete();
 

@@ -30,16 +30,22 @@
             </div>
             <div class="mb-3">
                 <label for="horaFin" class="form-label">Hora Fin</label>
-                <input value="{{ $llamada->horaFin }}" type="time" class="form-control" name="horaFin" placeholder="00:00"
-                    required>
+                <input value="{{ $llamada->horaFin }}" type="time" class="form-control" name="horaFin"
+                    placeholder="00:00" required>
                 @if ($errors->has('horaFin'))
                 <span class="text-danger text-left">{{ $errors->first('horaFin') }}</span>
                 @endif
             </div>
             <div class="mb-3">
                 <label for="empresaCliente" class="form-label">Cliente</label>
-                <input value="{{ $llamada->empresaCliente }}" type="text" class="form-control" name="empresaCliente"
-                    placeholder="St. Louis Hospital" required>
+                <select class="form-control" name="empresaCliente" required>
+                    <option value="">Elija la empresa cliente</option>
+                    @foreach($empresa_clientes as $empresa_cliente)
+                    <option value="{{ $empresa_cliente->id }}" {{ ( $empresa_cliente->id == $llamada->empresaCliente) ? 'selected' : '' }}>{{
+                        $empresa_cliente->nombre }}
+                    </option>
+                    @endforeach
+                </select>
                 @if ($errors->has('empresaCliente'))
                 <span class="text-danger text-left">{{ $errors->first('empresaCliente') }}</span>
                 @endif

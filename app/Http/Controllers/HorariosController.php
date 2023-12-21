@@ -10,12 +10,12 @@ use App\Http\Requests\UpdateHorarioRequest;
 
 class HorariosController extends Controller
 {
-     /**
+    /**
      * Display all horarios
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $horarios = Horario::latest()->paginate(10);
 
@@ -27,7 +27,7 @@ class HorariosController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         return view('horarios.create');
     }
@@ -40,12 +40,12 @@ class HorariosController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(Horario $horario, StoreHorarioRequest $request) 
+    public function store(Horario $horario, StoreHorarioRequest $request)
     {
         //For demo purposes only. When creating horario or inviting a horario
         // you should create a generated random password and email it to the horario
         $horario->create(array_merge($request->validated(), [
-            'password' => 'test' 
+            'password' => 'test'
         ]));
 
         return redirect()->route('horarios.index')
@@ -59,7 +59,7 @@ class HorariosController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(Horario $horario) 
+    public function show(Horario $horario)
     {
         return view('horarios.show', [
             'horario' => $horario
@@ -73,7 +73,7 @@ class HorariosController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Horario $horario) 
+    public function edit(Horario $horario)
     {
 
         return view('horarios.edit', [
@@ -88,7 +88,7 @@ class HorariosController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(Horario $horario, UpdateHorarioRequest $request) 
+    public function update(Horario $horario, UpdateHorarioRequest $request)
     {
         $horario->update($request->validated());
 
@@ -103,7 +103,7 @@ class HorariosController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Horario $horario) 
+    public function destroy(Horario $horario)
     {
         $horario->delete();
 

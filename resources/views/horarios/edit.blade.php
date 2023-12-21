@@ -8,7 +8,7 @@
     </div>
 
     <div class="container mt-4">
-        <form method="post" action="{{ route('llamadas.update', $llamada->id) }}">
+        <form method="post" action="{{ route('horarios.update', $horario->id) }}">
             @method('patch')
             @csrf
             <div class="mb-3">

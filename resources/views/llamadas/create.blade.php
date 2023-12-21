@@ -37,8 +37,14 @@
             </div>
             <div class="mb-3">
                 <label for="empresaCliente" class="form-label">Cliente</label>
-                <input value="{{ old('empresaCliente') }}" type="text" class="form-control" name="empresaCliente"
-                    placeholder="St. Louis Hospital" required>
+                <select class="form-control" name="empresaCliente" required>
+                    <option value="">Elija la empresa cliente</option>
+                    @foreach($empresa_clientes as $empresa_cliente)
+                    <option value="{{ $empresa_cliente->id }}" >{{
+                        $empresa_cliente->nombre }}
+                    </option>
+                    @endforeach
+                </select>
                 @if ($errors->has('empresaCliente'))
                 <span class="text-danger text-left">{{ $errors->first('empresaCliente') }}</span>
                 @endif
