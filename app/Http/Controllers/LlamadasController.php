@@ -89,6 +89,7 @@ class LlamadasController extends Controller
             'empresa_clientes' => EmpresaCliente::latest()->get(),
             'proveedors' => Proveedor::latest()->get(),
             'lenguaLEPs' => LenguaLEP::latest()->get(),
+            'tipos' => Tipo::latest()->get()
         ]);
     }
     /**

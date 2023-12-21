@@ -23,13 +23,18 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        // Let's get the route param by name to get the User object value
-        $user = request()->route('user');
-
         return [
+            'nroDocIdentificacion' => 'none',
+            'sede' => 'required',
+            'apellido' => 'required',
             'name' => 'required',
-            'email' => 'required|email:rfc,dns|unique:users,email,'.$user->id,
-            'username' => 'required|unique:users,username,'.$user->id,
+            'tlfContacto' => 'required',
+            'email' => 'required|email:rfc,dns|unique:users,email',
+            'emailRackspace' => 'required|email:rfc,dns|unique:users,email',
+            'fullTime' => 'required',
+            'categoria' => 'required',
+            'horario' => 'required',
+            'username' => 'required|unique:users,username',
         ];
     }
 }

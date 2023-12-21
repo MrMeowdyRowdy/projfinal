@@ -26,8 +26,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'nroDocIdentificacion',
+        'sede',
+        'apellido',
         'name',
+        'tlfContacto',
         'email',
+        'emailRackspace',
+        'fullTime',
+        'categoria',
+        'horario',
         'username',
         'password',
     ];

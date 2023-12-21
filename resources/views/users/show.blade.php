@@ -15,7 +15,7 @@
                 Cédula: {{ $user->nroDocIdentificacion }}
             </p>
             <p>
-                Sede: {{ $user->Sede }}
+                Sede: {{ $user->sede }}
             </p>
             <p>
                 Apellido: {{ $user->apellido }}

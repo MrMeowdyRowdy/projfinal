@@ -34,7 +34,7 @@
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->sede }}</td>
-                        <td>{{ $user->Apellido }}</td>
+                        <td>{{ $user->apellido }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->emailRackspace }}</td>
                         <td>{{ $user->fullTime }}</td>
