@@ -10,15 +10,7 @@
     <div class="container mt-4">
         <form method="POST" action="">
             @csrf
-            <div class="mb-3">
-                <label for="interpreterID" class="form-label">Interpreter ID</label>
-                <input value="{{ old('interpreterID') }}" type="number" class="form-control" name="interpreterID"
-                    placeholder="3XXXXX" required>
 
-                @if ($errors->has('interpreterID'))
-                <span class="text-danger text-left">{{ $errors->first('interpreterID') }}</span>
-                @endif
-            </div>
             <div class="mb-3">
                 <label for="horaInicio" class="form-label">Hora Inicio</label>
                 <input value="{{ old('horaInicio') }}" type="time" class="form-control" name="horaInicio"
@@ -40,7 +32,7 @@
                 <select class="form-control" name="empresaCliente" required>
                     <option value="">Elija la empresa cliente</option>
                     @foreach($empresa_clientes as $empresa_cliente)
-                    <option value="{{ $empresa_cliente->id }}" >{{
+                    <option value="{{ $empresa_cliente->nombre }}" >{{
                         $empresa_cliente->nombre }}
                     </option>
                     @endforeach
@@ -48,13 +40,13 @@
                 @if ($errors->has('empresaCliente'))
                 <span class="text-danger text-left">{{ $errors->first('empresaCliente') }}</span>
                 @endif
-            </div>empresaCliente
+            </div>
             <div class="mb-3">
                 <label for="proveedor" class="form-label">Proveedor</label>
                 <select class="form-control" name="proveedor" required>
                     <option value="">Elija la empresa bajo la cual has prestado el servicio</option>
                     @foreach($proveedors as $proveedor)
-                    <option value="{{ $proveedor->id }}">{{
+                    <option value="{{ $proveedor->nombre }}">{{
                         $proveedor->nombre }}
                     </option>
                     @endforeach
@@ -68,7 +60,7 @@
                 <select class="form-control" name="lenguaLEP" required>
                     <option value="">Elige el lenguaje del LEP</option>
                     @foreach($lenguaLEPs as $lenguaLEP)
-                    <option value="{{ $lenguaLEP->id }}" >{{
+                    <option value="{{ $lenguaLEP->lengua }}" >{{
                         $lenguaLEP->lengua }}
                     </option>
                     @endforeach
@@ -79,21 +71,18 @@
             </div>
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo</label>
-                <input value="{{ old('tipo') }}" type="text" class="form-control" name="tipo" placeholder="CSI"
-                    required>
+                <select class="form-control" name="tipo" required>
+                    <option value="">Elige el tipo de llamada atendida</option>
+                    @foreach($tipos as $tipo)
+                    <option value="{{ $tipo->tipo }}">{{
+                        $tipo->tipo }}
+                    </option>
+                    @endforeach
+                </select>
                 @if ($errors->has('tipo'))
                 <span class="text-danger text-left">{{ $errors->first('tipo') }}</span>
                 @endif
             </div>
-            <div class="mb-3">
-                <label for="especializacion" class="form-label">Especializacion</label>
-                <input value="{{ old('especializacion') }}" type="text" class="form-control" name="especializacion"
-                    placeholder="MED" required>
-                @if ($errors->has('especializacion'))
-                <span class="text-danger text-left">{{ $errors->first('especializacion') }}</span>
-                @endif
-            </div>
-
             <button type="submit" class="btn btn-primary">Registrar llamada</button>
             <a href="{{ route('llamadas.index') }}" class="btn btn-default">Atrás</a>
         </form>

@@ -41,7 +41,7 @@
                 <select class="form-control" name="empresaCliente" required>
                     <option value="">Elija la empresa cliente</option>
                     @foreach($empresa_clientes as $empresa_cliente)
-                    <option value="{{ $empresa_cliente->id }}" {{ ( $empresa_cliente->id == $llamada->empresaCliente) ? 'selected' : '' }}>{{
+                    <option value="{{ $empresa_cliente->nombre }}" {{ ( $empresa_cliente->nombre == $llamada->empresaCliente) ? 'selected' : '' }}>{{
                         $empresa_cliente->nombre }}
                     </option>
                     @endforeach
@@ -55,7 +55,7 @@
                 <select class="form-control" name="proveedor" required>
                     <option value="">Elija la empresa bajo la cual has prestado el servicio</option>
                     @foreach($proveedors as $proveedor)
-                    <option value="{{ $proveedor->id }}" {{ ( $proveedor->id == $llamada->proveedor) ? 'selected' : '' }}>{{
+                    <option value="{{ $proveedor->nombre }}" {{ ( $proveedor->nombre == $llamada->proveedor) ? 'selected' : '' }}>{{
                         $proveedor->nombre }}
                     </option>
                     @endforeach
@@ -69,8 +69,8 @@
                 <select class="form-control" name="lenguaLEP" required>
                     <option value="">Elige el lenguaje del LEP</option>
                     @foreach($lenguaLEPs as $lenguaLEP)
-                    <option value="{{ $lenguaLEP->id }}" {{ ( $lenguaLEP->id == $llamada->lenguaLEP) ? 'selected' : '' }}>{{
-                        $lenguaLEP->nombre }}
+                    <option value="{{ $lenguaLEP->lengua }}" {{ ( $lenguaLEP->lengua == $llamada->lenguaLEP) ? 'selected' : '' }}>{{
+                        $lenguaLEP->lengua }}
                     </option>
                     @endforeach
                 </select>
@@ -80,18 +80,16 @@
             </div>
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo</label>
-                <input value="{{ $llamada->tipo }}" type="text" class="form-control" name="tipo" placeholder="CSI"
-                    required>
+                <select class="form-control" name="tipo" required>
+                    <option value="">Elige el tipo de llamada atendida</option>
+                    @foreach($tipos as $tipo)
+                    <option value="{{ $tipo->tipo }}" {{ ( $tipo->tipo == $llamada->tipo) ? 'selected' : '' }}>{{
+                        $tipo->tipo }}
+                    </option>
+                    @endforeach
+                </select>
                 @if ($errors->has('tipo'))
                 <span class="text-danger text-left">{{ $errors->first('tipo') }}</span>
-                @endif
-            </div>
-            <div class="mb-3">
-                <label for="especializacion" class="form-label">Especializacion</label>
-                <input value="{{ $llamada->especializacion }}" type="text" class="form-control" name="especializacion"
-                    placeholder="MED" required>
-                @if ($errors->has('especializacion'))
-                <span class="text-danger text-left">{{ $errors->first('especializacion') }}</span>
                 @endif
             </div>
 

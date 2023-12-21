@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LenguaLEP;
 use App\Models\Proveedor;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLlamadaRequest;
 use App\Http\Requests\UpdateLlamadaRequest;
@@ -36,7 +37,8 @@ class LlamadasController extends Controller
         return view('llamadas.create', [
             'empresa_clientes' => EmpresaCliente::latest()->get(),
             'proveedors' => Proveedor::latest()->get(),
-            'lenguaLEPs' => LenguaLEP::latest()->get()
+            'lenguaLEPs' => LenguaLEP::latest()->get(),
+            'tipos' => Tipo::latest()->get()
         ]);
     }
 
@@ -50,9 +52,9 @@ class LlamadasController extends Controller
      */
     public function store(Llamada $llamada, StoreLlamadaRequest $request)
     {
-        //For demo purposes only. When creating llamada or inviting a llamada
-        // you should create a generated random password and email it to the llamada
-        $llamada->create(array_merge($request->validated()));
+        Llamada::create(array_merge($request->only('horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo'), [
+            'interpreterID' => auth()->id()
+        ]));
 
         return redirect()->route('llamadas.index')
             ->withSuccess(__('Llamada registrada correctamente.'));
@@ -86,7 +88,7 @@ class LlamadasController extends Controller
             'llamada' => $llamada,
             'empresa_clientes' => EmpresaCliente::latest()->get(),
             'proveedors' => Proveedor::latest()->get(),
-            'lenguaLEPs' => LenguaLEP::latest()->get()
+            'lenguaLEPs' => LenguaLEP::latest()->get(),
         ]);
     }
     /**

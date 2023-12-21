@@ -16,8 +16,7 @@ class Llamada extends Model
         'empresaCliente',
         'proveedor',
         'lenguaLEP',
-        'tipo',
-        'especializacion'
+        'tipo'
     ];
 
     public function user(){

@@ -28,8 +28,7 @@ class UpdateLlamadaRequest extends FormRequest
             'empresaCliente' => 'required',
             'proveedor' => 'required',
             'lenguaLEP' => 'required',
-            'tipo' => 'required',
-            'especializacion' => 'required'
+            'tipo' => 'required'
         ];
     }
 }

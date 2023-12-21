@@ -18,6 +18,7 @@
         <table class="table table-bordered">
           <tr>
              <th width="1%">No</th>
+             <th>Fecha</th>
              <th>Interpreter ID</th>
              <th>Hora Inicio</th>
              <th>Hora Fin</th>
@@ -25,12 +26,12 @@
              <th>Proveedor</th>
              <th>Lengua LEP</th>
              <th>Tipo</th>
-             <th>Especializacion</th>
              <th width="3%" colspan="3">Acciones</th>
           </tr>
             @foreach ($llamadas as $key => $llamada)
             <tr>
                 <td>{{ $llamada->id }}</td>
+                <td>{{ $llamada->fecha }}</td>
                 <td>{{ $llamada->interpreterID }}</td>
                 <td>{{ $llamada->horaInicio }}</td>
                 <td>{{ $llamada->horaFin }}</td>
@@ -38,7 +39,6 @@
                 <td>{{ $llamada->proveedor }}</td>
                 <td>{{ $llamada->lenguaLEP }}</td>
                 <td>{{ $llamada->tipo }}</td>
-                <td>{{ $llamada->especializacion }}</td>
                 <td>
                     <a class="btn btn-info btn-sm" href="{{ route('llamadas.show', $llamada->id) }}">Detalles</a>
                 </td>
