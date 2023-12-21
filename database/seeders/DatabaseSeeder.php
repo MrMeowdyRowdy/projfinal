@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateFullTimeStatuses::class);
         $this->call(CreateHorarios::class);
         $this->call(CreateClientes::class);
+        $this->call(CreateProveedores::class);
+        $this->call(CreateLenguaLEP::class);
     }
 }

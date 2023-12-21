@@ -21,10 +21,14 @@ class Llamada extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class);
     }
 
-    public function rcp(){
-        return $this->hasMany(RCP::class);
+    public function empresaCliente(){
+        return $this->hasOne(EmpresaCliente::class);
+    }
+
+    public function proveedor(){
+        return $this->hasOne(Proveedor::class);
     }
 }

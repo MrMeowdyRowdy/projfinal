@@ -48,13 +48,33 @@
                 @if ($errors->has('empresaCliente'))
                 <span class="text-danger text-left">{{ $errors->first('empresaCliente') }}</span>
                 @endif
-            </div>
+            </div>empresaCliente
             <div class="mb-3">
                 <label for="proveedor" class="form-label">Proveedor</label>
-                <input value="{{ old('proveedor') }}" type="text" class="form-control" name="proveedor"
-                    placeholder="LLS" required>
+                <select class="form-control" name="proveedor" required>
+                    <option value="">Elija la empresa bajo la cual has prestado el servicio</option>
+                    @foreach($proveedors as $proveedor)
+                    <option value="{{ $proveedor->id }}" {{ ( $proveedor->id == $llamada->proveedor) ? 'selected' : '' }}>{{
+                        $proveedor->nombre }}
+                    </option>
+                    @endforeach
+                </select>
                 @if ($errors->has('proveedor'))
                 <span class="text-danger text-left">{{ $errors->first('proveedor') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="lenguaLEP" class="form-label">Proveedor</label>
+                <select class="form-control" name="lenguaLEP" required>
+                    <option value="">Elija la empresa bajo la cual has prestado el servicio</option>
+                    @foreach($lenguaLEPs as $lenguaLEP)
+                    <option value="{{ $lenguaLEP->id }}" {{ ( $lenguaLEP->id == $llamada->lenguaLEP) ? 'selected' : '' }}>{{
+                        $lenguaLEP->nombre }}
+                    </option>
+                    @endforeach
+                </select>
+                @if ($errors->has('lenguaLEP'))
+                <span class="text-danger text-left">{{ $errors->first('lenguaLEP') }}</span>
                 @endif
             </div>
             <div class="mb-3">

@@ -52,8 +52,14 @@
             </div>
             <div class="mb-3">
                 <label for="proveedor" class="form-label">Proveedor</label>
-                <input value="{{ $llamada->proveedor }}" type="text" class="form-control" name="proveedor"
-                    placeholder="LLS" required>
+                <select class="form-control" name="proveedor" required>
+                    <option value="">Elija la empresa bajo la cual has prestado el servicio</option>
+                    @foreach($proveedors as $proveedor)
+                    <option value="{{ $proveedor->id }}" {{ ( $proveedor->id == $llamada->proveedor) ? 'selected' : '' }}>{{
+                        $proveedor->nombre }}
+                    </option>
+                    @endforeach
+                </select>
                 @if ($errors->has('proveedor'))
                 <span class="text-danger text-left">{{ $errors->first('proveedor') }}</span>
                 @endif

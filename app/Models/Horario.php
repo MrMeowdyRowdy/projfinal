@@ -16,6 +16,6 @@ class Horario extends Model
 
     public function course()
     {
-        return $this->belongsTo(User::class, 'id'); // links this->course_id to courses.id
+        return $this->belongsTo(User::class); // links this->course_id to courses.id
     }
 }

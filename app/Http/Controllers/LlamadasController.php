@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreLlamadaRequest;
 use App\Http\Requests\UpdateLlamadaRequest;
@@ -32,7 +33,9 @@ class LlamadasController extends Controller
     public function create()
     {
         return view('llamadas.create', [
-            'empresa_clientes' => EmpresaCliente::latest()->get()
+            'empresa_clientes' => EmpresaCliente::latest()->get(),
+            'proveedors' => Proveedor::latest()->get(),
+
         ]);
     }
 
@@ -79,7 +82,10 @@ class LlamadasController extends Controller
     {
 
         return view('llamadas.edit', [
-            'llamada' => $llamada]);
+            'llamada' => $llamada,
+            'empresa_clientes' => EmpresaCliente::latest()->get(),
+            'proveedors' => Proveedor::latest()->get(),
+        ]);
     }
     /**
      * Update llamada data
