@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\StoreProveedorsRequest;
+use App\Http\Requests\UpdateProveedorsRequest;
 use App\Models\Proveedor;
 
 use Illuminate\Http\Request;
 
-class ProveedoresController extends Controller
+class ProveedorsController extends Controller
 {
      /**
      * Display all proveedors
@@ -37,7 +39,7 @@ class ProveedoresController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(Proveedor $proveedor, StoreProveedorRequest $request) 
+    public function store(Proveedor $proveedor, StoreProveedorsRequest $request) 
     {
         //For demo purposes only. When creating proveedor or inviting a proveedor
         // you should create a generated random password and email it to the proveedor
@@ -79,11 +81,11 @@ class ProveedoresController extends Controller
      * Update proveedor data
      * 
      * @param Proveedor $proveedor
-     * @param UpdateProveedorRequest $request
+     * @param UpdateProveedorsRequest $request
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(Proveedor $proveedor, UpdateProveedorRequest $request) 
+    public function update(Proveedor $proveedor, UpdateProveedorsRequest $request) 
     {
         $proveedor->update($request->validated());
 

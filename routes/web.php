@@ -91,6 +91,20 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::delete('/{horario}/delete', 'HorariosController@destroy')->name('horarios.destroy');
         });
 
+        /**
+         * proveedors Routes
+         */
+        Route::group(['prefix' => 'proveedors'], function() {
+            Route::get('/', 'ProveedorsController@index')->name('proveedors.index');
+            Route::get('/create', 'ProveedorsController@create')->name('proveedors.create');
+            Route::post('/create', 'ProveedorsController@store')->name('proveedors.store');
+            Route::get('/{proveedor}/show', 'ProveedorsController@show')->name('proveedors.show');
+            Route::get('/{proveedor}/edit', 'ProveedorsController@edit')->name('proveedors.edit');
+            Route::patch('/{proveedor}/update', 'ProveedorsController@update')->name('proveedors.update');
+            Route::delete('/{proveedor}/delete', 'ProveedorsController@destroy')->name('proveedors.destroy');
+        });
+
+
         Route::resource('roles', RolesController::class);
         Route::resource('permissions', PermissionsController::class);
     });

@@ -133,8 +133,8 @@
                 @endif
             </div>
 
-            <button type="submit" class="btn btn-primary">Save user</button>
-            <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
+            <button type="submit" class="btn btn-primary">Crear Usuario</button>
+            <a href="{{ route('users.index') }}" class="btn btn-default">Atrás</a>
         </form>
     </div>
 

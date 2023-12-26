@@ -93,7 +93,7 @@
                 @endif
             </div>
 
-            <button type="submit" class="btn btn-primary">Registrar llamada</button>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
             <a href="{{ route('llamadas.index') }}" class="btn btn-default">Atrás</a>
         </form>
     </div>

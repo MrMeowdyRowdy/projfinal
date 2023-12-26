@@ -24,8 +24,8 @@
                     @endif
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save permission</button>
-                <a href="{{ route('permissions.index') }}" class="btn btn-default">Back</a>
+                <button type="submit" class="btn btn-primary">Crear Permisos</button>
+                <a href="{{ route('permissions.index') }}" class="btn btn-default">Atrás</a>
             </form>
         </div>
 

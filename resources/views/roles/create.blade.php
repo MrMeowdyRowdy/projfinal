@@ -54,7 +54,7 @@
                     @endforeach
                 </table>
 
-                <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+                <button type="submit" class="btn btn-primary">Crear Rol</button>
                 <a href="{{ route('users.index') }}" class="btn btn-default">Atrás</a>
             </form>
         </div>

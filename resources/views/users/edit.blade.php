@@ -138,8 +138,8 @@
                 @endif
             </div>
 
-            <button type="submit" class="btn btn-primary">Update user</button>
-            <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            <a href="{{ route('users.index') }}" class="btn btn-default">Atrás</button>
         </form>
     </div>
 
