@@ -8,7 +8,7 @@
     </div>
 
     <div class="container mt-4">
-        <form method="POST" action="">
+        <form method="POST" action="{{route('rcps.store')}}">
             @csrf
             <div class="mb-3">
                 <label for="llamadaID" class="form-label">ID de la Llamada</label>
