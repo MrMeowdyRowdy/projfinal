@@ -10,7 +10,6 @@
     <div class="container mt-4">
         <form method="POST" action="">
             @csrf
-
             <div class="mb-3">
                 <label for="horaInicio" class="form-label">Hora Inicio</label>
                 <input value="{{ old('horaInicio') }}" type="time" class="form-control" name="horaInicio"

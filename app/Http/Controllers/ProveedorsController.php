@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProveedorsRequest;
 use App\Http\Requests\UpdateProveedorsRequest;
 use App\Models\Proveedor;
-
 use Illuminate\Http\Request;
 
 class ProveedorsController extends Controller
@@ -35,7 +34,7 @@ class ProveedorsController extends Controller
      * Store a newly created proveedor
      * 
      * @param Proveedor $proveedor
-     * @param StoreProveedorRequest $request
+     * @param StoreProveedorsRequest $request
      * 
      * @return \Illuminate\Http\Response
      */
@@ -90,7 +89,7 @@ class ProveedorsController extends Controller
         $proveedor->update($request->validated());
 
         return redirect()->route('proveedors.index')
-            ->withSuccess(__('Proveedor actualizada correctamente.'));
+            ->withSuccess(__('Proveedor actualizado correctamente.'));
     }
 
     /**

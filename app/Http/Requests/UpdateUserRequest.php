@@ -24,7 +24,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nroDocIdentificacion' => 'none',
+            'nroDocIdentificacion' => 'required',
             'sede' => 'required',
             'apellido' => 'required',
             'name' => 'required',
