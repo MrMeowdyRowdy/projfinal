@@ -24,7 +24,7 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nroDocIdentificacion' => 'required',
+            'nroDocIdentificacion' => 'none',
             'sede' => 'required',
             'apellido' => 'required',
             'name' => 'required',

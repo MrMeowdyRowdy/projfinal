@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'App\Http\Controllers'], function()
-{   
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
     Route::get('/', 'HomeController@index')->name('home.index');
 
-    Route::group(['middleware' => ['guest']], function() {
+    Route::group(['middleware' => ['guest']], function () {
         /**
          * Register Routes
          */
@@ -35,7 +34,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
     });
 
-    Route::group(['middleware' => ['auth', 'permission']], function() {
+    Route::group(['middleware' => ['auth', 'permission']], function () {
         /**
          * Logout Routes
          */
@@ -44,7 +43,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * User Routes
          */
-        Route::group(['prefix' => 'users'], function() {
+        Route::group(['prefix' => 'users'], function () {
             Route::get('/', 'UsersController@index')->name('users.index');
             Route::get('/create', 'UsersController@create')->name('users.create');
             Route::post('/create', 'UsersController@store')->name('users.store');
@@ -57,7 +56,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * llamadas Routes
          */
-        Route::group(['prefix' => 'llamadas'], function() {
+        Route::group(['prefix' => 'llamadas'], function () {
             Route::get('/', 'LlamadasController@index')->name('llamadas.index');
             Route::get('/create', 'LlamadasController@create')->name('llamadas.create');
             Route::post('/create', 'LlamadasController@store')->name('llamadas.store');
@@ -69,7 +68,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * rcps Routes
          */
-        Route::group(['prefix' => 'rcps'], function() {
+        Route::group(['prefix' => 'rcps'], function () {
             Route::get('/', 'RcpsController@index')->name('rcps.index');
             Route::get('/create', 'RcpsController@create')->name('rcps.create');
             Route::post('/create', 'RcpsController@store')->name('rcps.store');
@@ -81,7 +80,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * horarios Routes
          */
-        Route::group(['prefix' => 'horarios'], function() {
+        Route::group(['prefix' => 'horarios'], function () {
             Route::get('/', 'HorariosController@index')->name('horarios.index');
             Route::get('/create', 'HorariosController@create')->name('horarios.create');
             Route::post('/create', 'HorariosController@store')->name('horarios.store');
@@ -94,7 +93,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         /**
          * proveedors Routes
          */
-        Route::group(['prefix' => 'proveedors'], function() {
+        Route::group(['prefix' => 'proveedors'], function () {
             Route::get('/', 'ProveedorsController@index')->name('proveedors.index');
             Route::get('/create', 'ProveedorsController@create')->name('proveedors.create');
             Route::post('/create', 'ProveedorsController@store')->name('proveedors.store');
@@ -103,6 +102,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::patch('/{proveedor}/update', 'ProveedorsController@update')->name('proveedors.update');
             Route::delete('/{proveedor}/delete', 'ProveedorsController@destroy')->name('proveedors.destroy');
         });
+
 
 
         Route::resource('roles', RolesController::class);

@@ -42,6 +42,7 @@ class ProveedorsController extends Controller
     {
         //For demo purposes only. When creating proveedor or inviting a proveedor
         // you should create a generated random password and email it to the proveedor
+        dd($proveedor);
         $proveedor->create(array_merge($request->validated()));
 
         return redirect()->route('proveedors.index')
