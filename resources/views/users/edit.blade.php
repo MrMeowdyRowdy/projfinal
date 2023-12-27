@@ -13,7 +13,7 @@
             @csrf
             <div class="mb-3">
                 <label for="nroDocIdentificacion" class="form-label">Cédula</label>
-                <input value="{{ $user->nroDocIdentificacion }}" type="text" class="form-control" name="name"
+                <input value="{{ $user->nroDocIdentificacion }}" type="text" class="form-control" name="nroDocIdentificacion"
                     placeholder="1700000000" required>
 
                 @if ($errors->has('nroDocIdentificacion'))

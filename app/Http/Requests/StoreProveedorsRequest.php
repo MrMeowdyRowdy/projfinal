@@ -22,7 +22,7 @@ class StoreProveedorsRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipo' => 'required',
+            'nombre' => 'required',
         ];
     }
 }

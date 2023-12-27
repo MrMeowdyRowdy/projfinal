@@ -22,7 +22,7 @@ class UpdateProveedorsRequest extends FormRequest
     public function rules()
     {
         return [
-            'Nombre' => 'required',
+            'nombre' => 'required',
         ];
     }
 }
