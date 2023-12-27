@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TipoRcp;
 use Illuminate\Http\Request;
 
+
 class TipoRcpsController extends Controller
 {
     /**

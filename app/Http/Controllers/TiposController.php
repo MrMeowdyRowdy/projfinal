@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 
+
 class Tiposontroller extends Controller
 {
 

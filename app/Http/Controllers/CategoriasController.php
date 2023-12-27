@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 
+
 class CategoriasController extends Controller
 {
     /**
@@ -22,7 +23,7 @@ class CategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request) 
     {
         $categorias = Categoria::orderBy('id', 'DESC')->paginate(5);
         return view('categorias.index', compact('categorias'))

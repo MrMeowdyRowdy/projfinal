@@ -24,7 +24,6 @@ class StoreLlamadaRequest extends FormRequest
     public function rules()
     {
         return [
-            'interpreterID' => 'required|starts_with:3|integer',
             'horaInicio' => 'required',
             'horaFin' => 'required',
             'empresaCliente' => 'required',

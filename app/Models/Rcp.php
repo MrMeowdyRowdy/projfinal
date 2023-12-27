@@ -23,4 +23,8 @@ class Rcp extends Model
     public function llamada(){
         return $this->belongsTo(Llamada::class,'id');
     }
+
+    public function tipo(){
+        return $this->hasOne(TipoRcp::class,'tipo');
+    }
 }

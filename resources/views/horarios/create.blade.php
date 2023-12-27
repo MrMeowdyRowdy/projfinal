@@ -8,7 +8,7 @@
     </div>
 
     <div class="container mt-4">
-        <form method="POST" action="">
+        <form method="POST" action="{{route('horarios.store')}}">
             @csrf
             <div class="mb-3">
                 <label for="horaInicio" class="form-label">Hora Inicio</label>

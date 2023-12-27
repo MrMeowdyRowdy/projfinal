@@ -31,7 +31,7 @@ class StoreUserRequest extends FormRequest
             'tlfContacto' => 'required',
             'email' => 'required|email:rfc,dns|unique:users,email',
             'emailRackspace' => 'required|email:rfc,dns|unique:users,email',
-            'fullTime' => 'required',
+            //'fullTime' => 'required',
             'categoria' => 'required',
             'horario' => 'required',
             'username' => 'required|unique:users,username',

@@ -8,6 +8,7 @@ use App\Http\Requests\StoreHorarioRequest;
 use App\Http\Requests\UpdateHorarioRequest;
 
 
+
 class HorariosController extends Controller
 {
     /**

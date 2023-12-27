@@ -8,6 +8,7 @@ use App\Http\Requests\StoreRCPRequest;
 use App\Http\Requests\UpdateRCPRequest;
 use App\Models\Rcp;
 
+
 class RcpsController extends Controller
 {
     /**
@@ -27,7 +28,7 @@ class RcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() 
     {
         return view('rcps.create', [
             'tipoRcps' => TipoRcp::latest()->get()
@@ -46,7 +47,6 @@ class RcpsController extends Controller
     {
         //For demo purposes only. When creating rcp or inviting a rcp
         // you should create a generated random password and email it to the rcp
-        dd($rcp);
         Rcp::create(array_merge($request->only('llamadaID', 'tipo', 'mensaje'), [
             'interpreterID' => auth()->id()
         ]));

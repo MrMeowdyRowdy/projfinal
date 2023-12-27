@@ -22,7 +22,6 @@ class UpdateRCPRequest extends FormRequest
     public function rules()
     {
         return [
-            'interpreterID' => 'required|starts_with:3|integer',
             'llamadaID' => 'required|integer',
             'tipo' => 'required',
             'mensaje' => 'required'

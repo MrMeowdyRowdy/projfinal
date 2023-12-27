@@ -8,7 +8,7 @@
     </div>
 
     <div class="container mt-4">
-        <form method="POST" action="">
+        <form method="POST" action="{{route('users.store')}}">
             @csrf
             <div class="mb-3">
                 <label for="nroDocIdentificacion" class="form-label">Cédula</label>
@@ -74,10 +74,10 @@
 
             <div class="mb-3">
                 <label for="fullTime" class="form-label">Tipo de empleo</label>
-                <select class="form-control" name="fullTime" required>
+                <select class="form-control" name="fullTime">
                     <option value="">Empleado a tiempo completo</option>
                     @foreach($full_times as $full_time)
-                    <option value="{{ old('fullTime') }}">{{
+                    <option value="{{ $full_time->fullTime }}">{{
                         $full_time->fullTime }}
                     </option>
                     @endforeach
