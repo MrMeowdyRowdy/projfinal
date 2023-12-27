@@ -2,16 +2,16 @@
 
 @section('content')
 <div class="bg-light p-4 rounded">
-    <h1>Añadir un proveedor</h1>
+    <h1>Añadir una empresa cliente</h1>
     <div class="lead">
-        Llena los datos acerca del proveedor.
+        Llena los datos acerca del cliente.
     </div>
 
     <div class="container mt-4">
-        <form method="POST" action="{{route('proveedors.store')}}">
+        <form method="POST" action="{{route('empresaClientes.store')}}">
             @csrf
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre proveedor</label>
+                <label for="nombre" class="form-label">Nombre empresaCliente</label>
                 <input value="{{ old('nombre') }}" type="text" class="form-control" name="nombre"
                     placeholder="Nombre de la empresa bajo la cual se provee el servicio." required>
                 @if ($errors->has('nombre'))
@@ -20,8 +20,8 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Crear Proveedor</button>
-            <a href="{{ route('proveedors.index') }}" class="btn btn-default">Atrás</a>
+            <button type="submit" class="btn btn-primary">Crear Cliente</button>
+            <a href="{{ route('empresaClientes.index') }}" class="btn btn-default">Atrás</a>
         </form>
     </div>
 
