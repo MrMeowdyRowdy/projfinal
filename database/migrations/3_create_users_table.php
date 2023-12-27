@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('tlfContacto');
             $table->string('email')->unique();
             $table->string('emailRackspace')->unique();
+            $table->unsignedBigInteger('fullTime');
+            $table->unsignedBigInteger('categoria');
+            $table->unsignedBigInteger('horario');
             $table->foreign('fullTime')->references('id')->on('full_times')->onDelete('cascade');
             $table->foreign('categoria')->references('id')->on('categorias')->onDelete('cascade');
             $table->foreign('horario')->references('id')->on('horarios')->onDelete('cascade');

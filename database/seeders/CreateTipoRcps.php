@@ -26,7 +26,7 @@ class CreateTipoRcps extends Seeder
             'tipo' => 'Fallas de video',
         ]);
         $proveedor = TipoRcp::create([
-            'tipo' => 'Lenguaje incorrecto',
+            'tipo' => 'Cliente irrespetuoso',
         ]);
     }
 }

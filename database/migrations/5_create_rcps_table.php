@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('rcps', function (Blueprint $table) {
             $table->id();
-            $table->foreign("interpreterID")->references('id')->on('users')->onDelete('cascade');
-            $table->integer("llamadaID")->references('id')->on('llamadas')->onDelete('cascade');
-            $table->string("tipo")->references('id')->on('tipo_rcps')->onDelete('cascade');
+            $table->unsignedBigInteger('interpreterID');
+            $table->unsignedBigInteger('llamadaID');
+            $table->unsignedBigInteger('tipo');
+            $table->foreign('interpreterID')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('llamadaID')->references('id')->on('llamadas')->onDelete('cascade');
+            $table->foreign('tipo')->references('id')->on('tipo_rcps')->onDelete('cascade');
             $table->string('mensaje')->nullable();
             $table->timestamps();
         });

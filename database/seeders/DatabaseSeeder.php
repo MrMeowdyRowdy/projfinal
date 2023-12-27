@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(CreateAdminUserSeeder::class);
+
         $this->call(CreateCatsSeeder::class);
         $this->call(CreateFullTimeStatuses::class);
         $this->call(CreateHorarios::class);
@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateLenguaLEP::class);
         $this->call(CreateTipos::class);
         $this->call(CreateTipoRcps::class);
+        $this->call(CreateAdminUserSeeder::class);
     }
 }
