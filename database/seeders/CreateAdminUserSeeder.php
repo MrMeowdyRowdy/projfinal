@@ -25,8 +25,8 @@ class CreateAdminUserSeeder extends Seeder
             'email' => 'test@example.com',
             'emailRackspace' => 'test@rackspace.com',
             'fullTime' => '1',
-            'categoria' => null,
-            'horario' => null,
+            'categoria' => 'CSI',
+            'horario' => '8:00-16"00',
             'username' => 'TeamLeader',
             'password' => 'TeamLeader'
         ]);

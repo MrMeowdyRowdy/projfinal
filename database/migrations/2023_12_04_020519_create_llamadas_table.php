@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('llamadas', function (Blueprint $table) {
             $table->id();
-            $table->integer("interpreterID");
+            $table->integer('interpreterID');
             $table->date('fecha')->default(date("Y-m-d"));
-            $table->time("horaInicio");
-            $table->time("horaFin");
-            $table->string("empresaCliente");
-            $table->string("proveedor");
-            $table->string("lenguaLEP");
-            $table->string("tipo");
+            $table->time('horaInicio');
+            $table->time('horaFin');
+            $table->foreign('empresaCliente')->references('id')->on('empresa_clientes')->onDelete('cascade');
+            $table->foreign('proveedor')->references('id')->on('proveedors')->onDelete('cascade');
+            $table->foreign('lenguaLEP')->references('id')->on('lengua_l_e_p_s')->onDelete('cascade');
+            $table->foreign('tipo')->references('id')->on('categorias')->onDelete('cascade');
             $table->timestamps();
         });
     }

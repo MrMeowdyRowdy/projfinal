@@ -24,14 +24,14 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nroDocIdentificacion' => 'none',
+            'nroDocIdentificacion' => 'required',
             'sede' => 'required',
             'apellido' => 'required',
             'name' => 'required',
             'tlfContacto' => 'required',
             'email' => 'required|email:rfc,dns|unique:users,email',
             'emailRackspace' => 'required|email:rfc,dns|unique:users,email',
-            //'fullTime' => 'required',
+            'fullTime' => 'required',
             'categoria' => 'required',
             'horario' => 'required',
             'username' => 'required|unique:users,username',

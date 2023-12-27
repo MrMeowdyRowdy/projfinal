@@ -53,7 +53,6 @@ class UsersController extends Controller
     {
         //For demo purposes only. When creating user or inviting a user
         // you should create a generated random password and email it to the user
-        dd($request);
         $user->create(array_merge($request->validated(), [
             'password' => 'test' 
         ]));

@@ -38,6 +38,7 @@ class User extends Authenticatable
         'horario',
         'username',
         'password',
+        'role'
     ];
 
     /**
@@ -79,6 +80,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Categoria::class);
     }
+    
     public function horarios()
     {
         return $this->hasOne(Horario::class);

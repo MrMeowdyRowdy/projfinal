@@ -12,7 +12,7 @@
             @csrf
             <div class="mb-3">
                 <label for="nroDocIdentificacion" class="form-label">Cédula</label>
-                <input value="{{ old('nroDocIdentificacion') }}" type="text" class="form-control" name="name"
+                <input value="{{ old('nroDocIdentificacion') }}" type="text" class="form-control" name="nroDocIdentificacion"
                     placeholder="1700000000" required>
 
                 @if ($errors->has('nroDocIdentificacion'))
@@ -77,7 +77,7 @@
                 <select class="form-control" name="fullTime">
                     <option value="">Empleado a tiempo completo</option>
                     @foreach($full_times as $full_time)
-                    <option value="{{ $full_time->fullTime }}">{{
+                    <option value="{{ $full_time->id }}">{{
                         $full_time->fullTime }}
                     </option>
                     @endforeach
@@ -91,7 +91,7 @@
                 <select class="form-control" name="categoria" required>
                     <option value="">Categoria</option>
                     @foreach($categorias as $categoria)
-                    <option value="{{ $categoria->categoria }}">{{ $categoria->categoria }}
+                    <option value="{{ $categoria->id }}">{{ $categoria->categoria }}
                     </option>
                     @endforeach
                 </select>
@@ -104,7 +104,7 @@
                 <select class="form-control" name="horario" required>
                     <option value="">Horario</option>
                     @foreach($horarios as $horario)
-                    <option value="{{ $horario->detalle }}">{{ $horario->detalle }}</option>
+                    <option value="{{ $horario->id }}">{{ $horario->detalle }}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('horario'))
@@ -125,7 +125,7 @@
                 <select class="form-control" name="role" required>
                     <option value="">Select role</option>
                     @foreach($roles as $role)
-                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                    <option value="{{ $role->id }}">{{ $role->name }}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('role'))
