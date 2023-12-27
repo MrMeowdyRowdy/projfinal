@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTipoRcpRequest;
+use App\Http\Requests\UpdateTipoRcpRequest;
 use App\Models\TipoRcp;
 use Illuminate\Http\Request;
 
