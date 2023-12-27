@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpresaClientesController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\LlamadasController;
 use App\Http\Controllers\ProveedorsController;
@@ -118,6 +119,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::delete('/{proveedor}/delete', 'ProveedorsController@destroy')->name('proveedors.destroy');
         });*/
         Route::resource('proveedors', ProveedorsController::class);
+        Route::resource('empresaClientes', EmpresaClientesController::class);
 
 
 

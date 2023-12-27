@@ -11,11 +11,19 @@
         <form method="POST" action="{{route('empresaClientes.store')}}">
             @csrf
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre empresaCliente</label>
+                <label for="nombre" class="form-label">Nombre de la empresa Cliente</label>
                 <input value="{{ old('nombre') }}" type="text" class="form-control" name="nombre"
-                    placeholder="Nombre de la empresa bajo la cual se provee el servicio." required>
+                    placeholder="Nombre de la empresa cliente." required>
                 @if ($errors->has('nombre'))
                 <span class="text-danger text-left">{{ $errors->first('nombre') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="estado" class="form-label">Ubicación</label>
+                <input value="{{ old('estado') }}" type="text" class="form-control" name="estado"
+                    placeholder="Estado de la empresa cliente." required>
+                @if ($errors->has('estado'))
+                <span class="text-danger text-left">{{ $errors->first('estado') }}</span>
                 @endif
             </div>
 

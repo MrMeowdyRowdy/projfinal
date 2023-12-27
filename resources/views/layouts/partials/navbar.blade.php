@@ -13,6 +13,7 @@
           <li><a href="{{ route('roles.index') }}" class="nav-link px-2 text-white">Roles</a></li>
           <li><a href="{{ route('horarios.index') }}" class="nav-link px-2 text-white">Horarios</a></li>
           <li><a href="{{ route('proveedors.index') }}" class="nav-link px-2 text-white">Proveedores</a></li>
+          <li><a href="{{ route('empresaClientes.index') }}" class="nav-link px-2 text-white">Clientes</a></li>
           @endrole
           <li><a href="{{ route('llamadas.index') }}" class="nav-link px-2 text-white">Llamadas</a></li>
           <li><a href="{{ route('rcps.index') }}" class="nav-link px-2 text-white">RCPs</a></li>
