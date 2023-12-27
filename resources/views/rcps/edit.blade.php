@@ -25,7 +25,7 @@
                 <select class="form-control" name="tipo" required>
                     <option value="">Elige el tipoRcp de llamada atendida</option>
                     @foreach($tipoRcps as $tipoRcp)
-                    <option value="{{ $tipoRcp->tipo }}" {{ ( $tipoRcp->tipo == $rcp->tipo) ? 'selected' : '' }}>{{
+                    <option value="{{ $tipoRcp->id }}" {{ ( $tipoRcp->tipo == $rcp->tipo) ? 'selected' : '' }}>{{
                         $tipoRcp->tipo }}
                     </option>
                     @endforeach

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Categoria;
 use App\Models\LenguaLEP;
 use App\Models\Proveedor;
 use App\Models\Tipo;
@@ -39,7 +40,7 @@ class LlamadasController extends Controller
             'empresa_clientes' => EmpresaCliente::latest()->get(),
             'proveedors' => Proveedor::latest()->get(),
             'lenguaLEPs' => LenguaLEP::latest()->get(),
-            'tipos' => Tipo::latest()->get()
+            'tipos' => Categoria::latest()->get()
         ]);
     }
 
@@ -90,7 +91,7 @@ class LlamadasController extends Controller
             'empresa_clientes' => EmpresaCliente::latest()->get(),
             'proveedors' => Proveedor::latest()->get(),
             'lenguaLEPs' => LenguaLEP::latest()->get(),
-            'tipos' => Tipo::latest()->get()
+            'tipos' => Categoria::latest()->get()
         ]);
     }
     /**

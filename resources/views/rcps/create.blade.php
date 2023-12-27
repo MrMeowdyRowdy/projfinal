@@ -24,7 +24,7 @@
                 <select class="form-control" name="tipo" required>
                     <option value="">Elige el tipo de problema de llamada atendida</option>
                     @foreach($tipoRcps as $tipo)
-                    <option value="{{ $tipo->tipo }}">{{
+                    <option value="{{ $tipo->id }}">{{
                         $tipo->tipo }}
                     </option>
                     @endforeach

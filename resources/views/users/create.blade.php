@@ -78,7 +78,7 @@
                     <option value="">Empleado a tiempo completo</option>
                     @foreach($full_times as $full_time)
                     <option value="{{ $full_time->id }}">{{
-                        $full_time->fullTime }}
+                        $full_time->id }}
                     </option>
                     @endforeach
                 </select>

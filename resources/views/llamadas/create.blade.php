@@ -31,7 +31,7 @@
                 <select class="form-control" name="empresaCliente" required>
                     <option value="">Elija la empresa cliente</option>
                     @foreach($empresa_clientes as $empresa_cliente)
-                    <option value="{{ $empresa_cliente->nombre }}" >{{
+                    <option value="{{ $empresa_cliente->id }}" >{{
                         $empresa_cliente->nombre }}
                     </option>
                     @endforeach
@@ -45,7 +45,7 @@
                 <select class="form-control" name="proveedor" required>
                     <option value="">Elija la empresa bajo la cual has prestado el servicio</option>
                     @foreach($proveedors as $proveedor)
-                    <option value="{{ $proveedor->nombre }}">{{
+                    <option value="{{ $proveedor->id }}">{{
                         $proveedor->nombre }}
                     </option>
                     @endforeach
@@ -59,7 +59,7 @@
                 <select class="form-control" name="lenguaLEP" required>
                     <option value="">Elige el lenguaje del LEP</option>
                     @foreach($lenguaLEPs as $lenguaLEP)
-                    <option value="{{ $lenguaLEP->lengua }}" >{{
+                    <option value="{{ $lenguaLEP->id }}" >{{
                         $lenguaLEP->lengua }}
                     </option>
                     @endforeach
@@ -73,7 +73,7 @@
                 <select class="form-control" name="tipo" required>
                     <option value="">Elige el tipo de llamada atendida</option>
                     @foreach($tipos as $tipo)
-                    <option value="{{ $tipo->tipo }}">{{
+                    <option value="{{ $tipo->id }}">{{
                         $tipo->tipo }}
                     </option>
                     @endforeach
