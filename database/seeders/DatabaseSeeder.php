@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateLenguaLEP::class);
         $this->call(CreateTipos::class);
         $this->call(CreateTipoRcps::class);
+        $this->call(CreateSedes::class);
         $this->call(CreateAdminUserSeeder::class);
     }
 }
