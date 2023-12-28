@@ -25,7 +25,7 @@
                 <select class="form-control" name="sede" required>
                     <option value="">Sede</option>
                     @foreach($sedes as $sede)
-                    <option value="{{ $sede->id }}"{{ ( $sede->sede == $user->sede) ? 'selected' : ''
+                    <option value="{{ $sede->id }}"{{ ( $sede->id == $user->sede) ? 'selected' : ''
                         }}>{{ $sede->sede }}
                     </option>
                     @endforeach
@@ -83,7 +83,7 @@
                 <select class="form-control" name="fullTime" required>
                     <option value="">Empleado a tiempo completo</option>
                     @foreach($full_times as $full_time)
-                    <option value="{{ $full_time->id }}" {{ ( $full_time->fullTime == $user->fullTime) ? 'selected' : '' }}>{{
+                    <option value="{{ $full_time->id }}" {{ ( $full_time->id == $user->fullTime) ? 'selected' : '' }}>{{
                         $full_time->fullTime }}
                     </option>
                     @endforeach
@@ -97,7 +97,7 @@
                 <select class="form-control" name="categoria" required>
                     <option value="">Categoria</option>
                     @foreach($categorias as $categoria)
-                    <option value="{{ $categoria->id }}" {{ ( $categoria->categoria == $user->categoria) ? 'selected' : ''
+                    <option value="{{ $categoria->id }}" {{ ( $categoria->id == $user->categoria) ? 'selected' : ''
                         }}>{{ $categoria->categoria }}
                     </option>
                     @endforeach
@@ -111,7 +111,7 @@
                 <select class="form-control" name="horario" required>
                     <option value="">Horario</option>
                     @foreach($horarios as $horario)
-                    <option value="{{ $horario->id }}" {{ $horario->detalle == $user->horario ? 'selected' : '' }}>{{
+                    <option value="{{ $horario->id }}" {{ $horario->id == $user->horario ? 'selected' : '' }}>{{
                         $horario->detalle }}</option>
                     @endforeach
                 </select>

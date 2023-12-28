@@ -22,7 +22,7 @@ class CreateAdminUserSeeder extends Seeder
             'Apellido' => 'Ocaña',
             'name' => 'Dennis',
             'tlfContacto' => '0996389675',
-            'email' => 'test@example.com',
+            'email' => 'test@gmail.com',
             'emailRackspace' => 'test@rackspace.com',
             'fullTime' => '1',
             'categoria' => '1',

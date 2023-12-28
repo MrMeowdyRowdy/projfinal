@@ -39,7 +39,7 @@ class UsersController extends Controller
             'full_times'=> FullTime::latest()->get(),
             'categorias'=> Categoria::latest()->get(),
             'horarios'=> Horario::latest()->get(),
-            'sede'=> Sede::latest()->get()
+            'sedes'=> Sede::latest()->get()
         ]);
     }
 
@@ -94,7 +94,7 @@ class UsersController extends Controller
             'full_times'=> FullTime::latest()->get(),
             'categorias'=> Categoria::latest()->get(),
             'horarios'=> Horario::latest()->get(),
-            'sede'=> Sede::latest()->get()
+            'sedes'=> Sede::latest()->get()
         ]);
     }
     /**

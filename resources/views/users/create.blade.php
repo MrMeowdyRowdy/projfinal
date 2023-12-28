@@ -21,15 +21,6 @@
             </div>
             <div class="mb-3">
                 <label for="sede" class="form-label">Sede</label>
-                <input value="{{ old('sede') }}" type="text" class="form-control" name="sede" placeholder="ECU"
-                    required>
-
-                @if ($errors->has('sede'))
-                <span class="text-danger text-left">{{ $errors->first('sede') }}</span>
-                @endif
-            </div>
-            <div class="mb-3">
-                <label for="sede" class="form-label">Sede</label>
                 <select class="form-control" name="sede" required>
                     <option value="">Sede</option>
                     @foreach($sedes as $sede)
