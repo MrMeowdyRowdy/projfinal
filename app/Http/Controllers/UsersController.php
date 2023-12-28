@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sede;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -38,6 +39,7 @@ class UsersController extends Controller
             'full_times'=> FullTime::latest()->get(),
             'categorias'=> Categoria::latest()->get(),
             'horarios'=> Horario::latest()->get(),
+            'sede'=> Sede::latest()->get()
         ]);
     }
 
@@ -92,6 +94,7 @@ class UsersController extends Controller
             'full_times'=> FullTime::latest()->get(),
             'categorias'=> Categoria::latest()->get(),
             'horarios'=> Horario::latest()->get(),
+            'sede'=> Sede::latest()->get()
         ]);
     }
     /**

@@ -18,7 +18,7 @@ class CreateAdminUserSeeder extends Seeder
     {
         $user = User::create([
             'nroDocIdentificacion' => '1721154498',
-            'sede' => 'Ecuador',
+            'sede' => '1',
             'Apellido' => 'Ocaña',
             'name' => 'Dennis',
             'tlfContacto' => '0996389675',

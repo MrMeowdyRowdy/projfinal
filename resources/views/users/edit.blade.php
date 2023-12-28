@@ -22,9 +22,14 @@
             </div>
             <div class="mb-3">
                 <label for="sede" class="form-label">Sede</label>
-                <input value="{{ $user->sede }}" type="text" class="form-control" name="sede" placeholder="ECU"
-                    required>
-
+                <select class="form-control" name="sede" required>
+                    <option value="">Sede</option>
+                    @foreach($sedes as $sede)
+                    <option value="{{ $sede->id }}"{{ ( $sede->sede == $user->sede) ? 'selected' : ''
+                        }}>{{ $sede->sede }}
+                    </option>
+                    @endforeach
+                </select>
                 @if ($errors->has('sede'))
                 <span class="text-danger text-left">{{ $errors->first('sede') }}</span>
                 @endif

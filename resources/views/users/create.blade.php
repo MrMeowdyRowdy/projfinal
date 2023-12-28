@@ -29,12 +29,16 @@
                 @endif
             </div>
             <div class="mb-3">
-                <label for="apellido" class="form-label">Apellido</label>
-                <input value="{{ old('apellido') }}" type="text" class="form-control" name="apellido"
-                    placeholder="Apellido" required>
-
-                @if ($errors->has('apellido'))
-                <span class="text-danger text-left">{{ $errors->first('apellido') }}</span>
+                <label for="sede" class="form-label">Sede</label>
+                <select class="form-control" name="sede" required>
+                    <option value="">Sede</option>
+                    @foreach($sedes as $sede)
+                    <option value="{{ $sede->id }}">{{ $sede->sede }}
+                    </option>
+                    @endforeach
+                </select>
+                @if ($errors->has('sede'))
+                <span class="text-danger text-left">{{ $errors->first('sede') }}</span>
                 @endif
             </div>
             <div class="mb-3">

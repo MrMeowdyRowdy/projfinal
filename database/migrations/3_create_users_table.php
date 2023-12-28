@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id()->startingValue(300000);
             $table->string('nroDocIdentificacion')->unique();
-            $table->string('sede');
+            $table->unsignedBigInteger('sede');
+            $table->foreign('sede')->references('id')->on('sedes')->onDelete('cascade');
             $table->string('apellido');
             $table->string('name');
             $table->string('tlfContacto');
