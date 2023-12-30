@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\EmpresaCliente;
 use App\Models\LenguaLEP;
 use App\Models\Llamada;
 use App\Models\Proveedor;
@@ -109,7 +110,7 @@ class ReportesController extends Controller
             $llamadas = $this->filtrarProveedor();
         }
 
-        return view('reportes.filrosproveedor', [
+        return view('reportes.filtrosproveedor', [
             'llamadas' => $llamadas,
             'proveedors' => Proveedor::latest()->get(),
         ]);
@@ -220,6 +221,69 @@ class ReportesController extends Controller
         return ($llamadasAgrupadas);
     }
 
+    public function porCliente(Request $request)
+    {
+        $filters = [];
+        $filters['column'] = 'empresaCliente';
+        $filters['value'] = $request->empresaCliente;
+        if ($request->startdate !== null && $request->enddate !== null) {
+            $filters['dates'] = [
+                'startdate' => $request->startdate,
+                'enddate' => $request->enddate];
+        }
 
+        if ($filters) {
+            $llamadas = $this->filtrarCliente($filters);
+        } else {
+            $llamadas = $this->filtrarCliente();
+        }
+
+        return view('reportes.filtroscliente', [
+            'llamadas' => $llamadas,
+            'clientes' => EmpresaCliente::latest()->get(),
+        ]);
+    }
+    private function filtrarCliente($filters = null)
+    {
+        // Llama base de datos y devuleve todos los objetos llamada sin filtros pero con relaciones
+        if (!$filters) {
+            $llamadas = Llamada::select('*')
+                ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')->get();
+        }
+
+        // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro y relaciones
+        else {
+            // consulta si hay filtros fecha
+            if (!array_key_exists('dates', $filters)) {
+                // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'column' => 'empresaCliente'  (columna bdd) y relaciones
+                $llamadas = Llamada::select('*')
+                    ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')->where($filters['column'], $filters['value'])->get();
+            } else {
+                // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'empresaCliente, fechas siendo columna ' created at y los filtros correspondiente y relaciones
+                $llamadas = Llamada::select('*')
+                    ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha',[$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
+            }
+        }
+
+        $llamadasAgrupadas = [];
+        foreach ($llamadas as $llamada) {
+            if (array_key_exists($llamada->empresaCliente, $llamadasAgrupadas)) {
+                // Key already exists, update the values
+                $llamadasAgrupadas[$llamada->empresaCliente]['llamadasClienteCount'] += 1;
+                //Construyes un array u objecto que necesites para agregar a este segundo array
+                $llamadasAgrupadas[$llamada->empresaCliente]['llamadasArray'][] = $llamada;
+            } else {
+                // Key doesn't exist, create a new entry
+                $llamadasAgrupadas[$llamada->empresaCliente] = [
+                    'llamadasClienteCount' => 1,
+                    'ClienteUsado' => $llamada->empresaCliente,
+                    'llamadasArray' => [$llamada]
+                ];
+                
+            }
+        }
+
+        return ($llamadasAgrupadas);
+    }
 
 }
