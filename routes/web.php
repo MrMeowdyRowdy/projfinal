@@ -132,6 +132,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/', 'ReportesController@index')->name('reportes.index');
             Route::get('/porIdioma', 'ReportesController@porIdioma')->name('reportes.porIdioma');
             Route::post('/porIdioma', 'ReportesController@porIdioma')->name('reportes.porIdioma');
+            Route::get('/porProveedor', 'ReportesController@porProveedor')->name('reportes.porProveedor');
+            Route::post('/porProveedor', 'ReportesController@porProveedor')->name('reportes.porProveedor');
         });
 
 

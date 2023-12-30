@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateTipoRcps::class);
         $this->call(CreateSedes::class);
         $this->call(CreateAdminUserSeeder::class);
+        $this->call(CreateLlamadasSeeder::class);
     }
 }

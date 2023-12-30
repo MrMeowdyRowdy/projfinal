@@ -5,11 +5,11 @@
 <h1 class="mb-3">Reporte de llamadas por idioma</h1>
 
 <div class="bg-light p-4 rounded">
-    <h1>Llamadas por Idioma</h1>
+    <h1>Llamadas por Proveedor</h1>
     <div class="lead">
         Ingresa los parametros por los cuales deseas realizar las busquedas.
         <div class="mb-3">
-            <form method="POST" action="{{route('reportes.porIdioma')}}">
+            <form method="POST" action="{{route('reportes.porProveedor')}}">
                 @csrf
                 <label for="startdate" class="form-label">Fecha Inicio</label>
                 <input value="{{ old('startdate') }}" type="date" class="form-control" name="startdate" placeholder="">
@@ -22,17 +22,17 @@
                 <span class="text-danger text-left">{{ $errors->first('enddate') }}</span>
                 @endif
                 <div class="mb-3">
-                    <label for="lenguaLEP" class="form-label">Lengua del LEP</label>
-                    <select class="form-control" name="lenguaLEP" required>
-                        <option value="">Elige el lenguaje del LEP</option>
-                        @foreach($lenguaLEPs as $lenguaLEP)
-                        <option value="{{ $lenguaLEP->id }}">{{
-                            $lenguaLEP->lengua }}
+                    <label for="proveedor" class="form-label">Proveedor</label>
+                    <select class="form-control" name="proveedor" required>
+                        <option value="">Elige el proveedor</option>
+                        @foreach($proveedors as $proveedor)
+                        <option value="{{ $proveedor->id }}">{{
+                            $proveedor->nombre }}
                         </option>
                         @endforeach
                     </select>
-                    @if ($errors->has('lenguaLEP'))
-                    <span class="text-danger text-left">{{ $errors->first('lenguaLEP') }}</span>
+                    @if ($errors->has('proveedor'))
+                    <span class="text-danger text-left">{{ $errors->first('proveedor') }}</span>
                     @endif
                 </div>
         </div>
