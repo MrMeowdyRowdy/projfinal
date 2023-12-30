@@ -134,6 +134,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::post('/porIdioma', 'ReportesController@porIdioma')->name('reportes.porIdioma');
             Route::get('/porProveedor', 'ReportesController@porProveedor')->name('reportes.porProveedor');
             Route::post('/porProveedor', 'ReportesController@porProveedor')->name('reportes.porProveedor');
+            Route::get('/porCategoria', 'ReportesController@porCategoria')->name('reportes.porCategoria');
+            Route::post('/porCategoria', 'ReportesController@porCategoria')->name('reportes.porCategoria');
         });
 
 

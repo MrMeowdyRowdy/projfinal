@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\LenguaLEP;
 use App\Models\Llamada;
 use App\Models\Proveedor;
@@ -153,6 +154,72 @@ class ReportesController extends Controller
         }
         return ($llamadasAgrupadas);
     }
+
+    public function porCategoria(Request $request)
+    {
+        $filters = [];
+        $filters['column'] = 'tipo';
+        $filters['value'] = $request->categoria;
+        if ($request->startdate !== null && $request->enddate !== null) {
+            $filters['dates'] = [
+                'startdate' => $request->startdate,
+                'enddate' => $request->enddate];
+        }
+
+
+        if ($filters) {
+            $llamadas = $this->filtrarTipo($filters);
+        } else {
+            $llamadas = $this->filtrarTipo();
+        }
+
+        return view('reportes.filtrostipo', [
+            'llamadas' => $llamadas,
+            'categorias' => Categoria::latest()->get(),
+        ]);
+    }
+
+    private function filtrarTipo($filters = null)
+    {
+        // Llama base de datos y devuleve todos los objetos llamada sin filtros pero con relaciones
+        if (!$filters) {
+            $llamadas = Llamada::select('*')
+                ->join('categorias', 'llamadas.tipo', '=', 'categorias.id')->get();
+        }
+
+        // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro y relaciones
+        else {
+            // consulta si hay filtros fecha
+            if (!array_key_exists('dates', $filters)) {
+                // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'column' => 'categoria'  (columna bdd) y relaciones
+                $llamadas = Llamada::select('*')
+                    ->join('categorias', 'llamadas.tipo', '=', 'categorias.id')->where($filters['column'], $filters['value'])->get();
+            } else {
+                // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'categoria, fechas siendo columna ' created at y los filtros correspondiente y relaciones
+                $llamadas = Llamada::select('*')
+                    ->join('categorias', 'llamadas.tipo', '=', 'categorias.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha',[$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
+            }
+        }
+
+        $llamadasAgrupadas = [];
+        foreach ($llamadas as $llamada) {
+            if (array_key_exists($llamada->tipo, $llamadasAgrupadas)) {
+                // Key already exists, update the values
+                $llamadasAgrupadas[$llamada->tipo]['llamadasCategoriaCount'] += 1;
+                //Construyes un array u objecto que necesites para agregar a este segundo array
+                $llamadasAgrupadas[$llamada->tipo]['llamadasArray'][] = $llamada;
+            } else {
+                // Key doesn't exist, create a new entry
+                $llamadasAgrupadas[$llamada->tipo] = [
+                    'llamadasCategoriaCount' => 1,
+                    'categoriaUsado' => $llamada->tipo,
+                    'llamadasArray' => [$llamada]
+                ];
+            }
+        }
+        return ($llamadasAgrupadas);
+    }
+
 
 
 }
