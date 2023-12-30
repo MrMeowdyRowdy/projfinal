@@ -68,7 +68,7 @@ class ReportesController extends Controller
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'lenguaLEP, fechas siendo columna ' created at y los filtros correspondiente y relaciones
                 $llamadas = Llamada::select('*')
-                    ->join('lengua_l_e_p_s', 'llamadas.lenguaLEP', '=', 'lengua_l_e_p_s.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha',[$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
+                    ->join('lengua_l_e_p_s', 'llamadas.lenguaLEP', '=', 'lengua_l_e_p_s.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
 
@@ -133,7 +133,7 @@ class ReportesController extends Controller
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'proveedor, fechas siendo columna ' created at y los filtros correspondiente y relaciones
                 $llamadas = Llamada::select('*')
-                    ->join('proveedors', 'llamadas.proveedor', '=', 'proveedors.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha',[$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
+                    ->join('proveedors', 'llamadas.proveedor', '=', 'proveedors.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
 
@@ -198,7 +198,7 @@ class ReportesController extends Controller
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'categoria, fechas siendo columna ' created at y los filtros correspondiente y relaciones
                 $llamadas = Llamada::select('*')
-                    ->join('categorias', 'llamadas.tipo', '=', 'categorias.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha',[$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
+                    ->join('categorias', 'llamadas.tipo', '=', 'categorias.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
 
@@ -261,7 +261,7 @@ class ReportesController extends Controller
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'empresaCliente, fechas siendo columna ' created at y los filtros correspondiente y relaciones
                 $llamadas = Llamada::select('*')
-                    ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha',[$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
+                    ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')->where($filters['column'], $filters['value'])->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
 
@@ -279,7 +279,7 @@ class ReportesController extends Controller
                     'ClienteUsado' => $llamada->empresaCliente,
                     'llamadasArray' => [$llamada]
                 ];
-                
+
             }
         }
 
