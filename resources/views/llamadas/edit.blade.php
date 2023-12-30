@@ -84,7 +84,7 @@
                     <option value="">Elige el tipo de llamada atendida</option>
                     @foreach($tipos as $tipo)
                     <option value="{{ $tipo->id }}" {{ ( $tipo->tipo == $llamada->tipo) ? 'selected' : '' }}>{{
-                        $tipo->tipo }}
+                        $tipo->categoria }}
                     </option>
                     @endforeach
                 </select>

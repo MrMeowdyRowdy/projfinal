@@ -30,4 +30,7 @@ class Llamada extends Model
     public function proveedor(){
         return $this->hasOne(Proveedor::class);
     }
+    public function lengua(){
+        return $this->hasOne(LenguaLEP::class);
+    }
 }

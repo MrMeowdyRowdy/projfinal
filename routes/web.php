@@ -5,6 +5,7 @@ use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\LlamadasController;
 use App\Http\Controllers\ProveedorsController;
 use App\Http\Controllers\RcpsController;
+use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\SedesController;
 use App\Http\Controllers\TipoRcpsController;
 use App\Http\Controllers\UsersController;
@@ -124,6 +125,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::resource('empresaClientes', EmpresaClientesController::class);
         Route::resource('tipoRcps', TipoRcpsController::class);
         Route::resource('sedes', SedesController::class);
+        /**
+         * proveedors Routes
+         */
+        Route::group(['prefix' => 'reportes'], function () {
+            Route::get('/', 'ReportesController@index')->name('reportes.index');
+            Route::get('/porIdioma', 'ReportesController@porIdioma')->name('reportes.porIdioma');
+            Route::post('/porIdioma', 'ReportesController@porIdioma')->name('reportes.porIdioma');
+        });
 
 
 
