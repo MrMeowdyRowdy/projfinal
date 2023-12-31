@@ -12,8 +12,8 @@
             @csrf
             <div class="mb-3">
                 <label for="llamadaID" class="form-label">ID de la Llamada</label>
-                <input value="{{ old('llamadaID') }}" type="number" class="form-control" name="llamadaID"
-                    placeholder="Id de la Llamada" required>
+                <input value="{{ $llamadaID }}" type="number" class="form-control" name="llamadaID"
+                    placeholder="Id de la Llamada" readonly>
 
                 @if ($errors->has('llamadaID'))
                 <span class="text-danger text-left">{{ $errors->first('llamadaID') }}</span>

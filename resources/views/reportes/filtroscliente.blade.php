@@ -64,10 +64,10 @@
             <td>{{ $llamadaObject->interpreterID }}</td>
             <td>{{ $llamadaObject->horaInicio }}</td>
             <td>{{ $llamadaObject->horaFin }}</td>
-            <td>{{ $llamadaObject->empresaCliente }}</td>
-            <td>{{ $llamadaObject->proveedor }}</td>
-            <td>{{ $llamadaObject->lenguaLEP }}</td>
-            <td>{{ $llamadaObject->tipo }}</td>
+            <td>{{ $llamadaObject->empresaClienteObject->nombre }}</td>
+            <td>{{ $llamadaObject->proveedorObject->nombre }}</td>
+            <td>{{ $llamadaObject->lenguaLEPObject->lengua }}</td>
+            <td>{{ $llamadaObject->categoriaObject->categoria }}</td>
         </tr>
         @endforeach
         @endforeach

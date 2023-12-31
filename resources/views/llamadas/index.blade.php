@@ -26,7 +26,7 @@
              <th>Proveedor</th>
              <th>Lengua LEP</th>
              <th>Tipo</th>
-             <th width="3%" colspan="3">Acciones</th>
+             <th width="10%" colspan="4">Acciones</th>
           </tr>
             @foreach ($llamadas as $key => $llamada)
             <tr>
@@ -49,7 +49,12 @@
                     {!! Form::open(['method' => 'DELETE','route' => ['llamadas.destroy', $llamada->id],'style'=>'display:inline']) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                     {!! Form::close() !!}
+                    
                 </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="{{ route('rcps.create', ['id'=>$llamada->id]) }}">RCP</a>
+                </td>
+
             </tr>
             @endforeach
         </table>
