@@ -74,7 +74,12 @@ class ReportesController extends Controller
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
-
+        foreach ($llamadas as $llamada) {
+            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+        }
         $llamadasAgrupadas = [];
         foreach ($llamadas as $llamada) {
             if (array_key_exists($llamada->lengua, $llamadasAgrupadas)) {
@@ -142,7 +147,12 @@ class ReportesController extends Controller
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
-
+        foreach ($llamadas as $llamada) {
+            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+        }
         $llamadasAgrupadas = [];
         foreach ($llamadas as $llamada) {
             if (array_key_exists($llamada->proveedor, $llamadasAgrupadas)) {
@@ -210,7 +220,12 @@ class ReportesController extends Controller
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
-
+        foreach ($llamadas as $llamada) {
+            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+        }
         $llamadasAgrupadas = [];
         foreach ($llamadas as $llamada) {
             if (array_key_exists($llamada->tipo, $llamadasAgrupadas)) {
