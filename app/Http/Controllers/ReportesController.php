@@ -279,6 +279,7 @@ class ReportesController extends Controller
             $llamadas = $this->filtrarCliente();
         }
 
+
         return view('reportes.filtroscliente', [
             'llamadas' => $llamadas,
             'clientes' => EmpresaCliente::latest()->get(),
