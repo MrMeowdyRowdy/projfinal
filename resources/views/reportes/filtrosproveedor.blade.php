@@ -43,7 +43,9 @@
     <div class="mt-2">
         @include('layouts.partials.messages')
     </div>
-
+    @foreach ($llamadas as $key => $llamada)
+    <p>El total de llamadas para el proveedor es de {{ $llamada['llamadasProveedorCount'] }}</p>
+    @endforeach
     <table class="table table-bordered">
     <tr>
             <th width="1%">ID Llamada</th>

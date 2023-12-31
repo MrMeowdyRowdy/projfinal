@@ -89,16 +89,16 @@ class ReportesController extends Controller
         $llamadasAgrupadas = [];
 
         foreach ($llamadas as $llamada) {
-            if (array_key_exists($llamada->lengua, $llamadasAgrupadas)) {
+            if (array_key_exists($llamada->lenguaLEP, $llamadasAgrupadas)) {
                 // Key already exists, update the values
-                $llamadasAgrupadas[$llamada->lengua]['llamadasIdiomaCount'] += 1;
+                $llamadasAgrupadas[$llamada->lenguaLEP]['llamadasIdiomaCount'] += 1;
                 //Construyes un array u objecto que necesites para agregar a este segundo array
-                $llamadasAgrupadas[$llamada->lengua]['llamadasArray'][] = $llamada;
+                $llamadasAgrupadas[$llamada->lenguaLEP]['llamadasArray'][] = $llamada;
             } else {
                 // Key doesn't exist, create a new entry
-                $llamadasAgrupadas[$llamada->lengua] = [
+                $llamadasAgrupadas[$llamada->lengualenguaLEP] = [
                     'llamadasIdiomaCount' => 1,
-                    'lenguajeUsado' => $llamada->lengua,
+                    'lenguajeUsado' => $llamada->lenguaLEP,
                     'llamadasArray' => [$llamada]
                 ];
             }
@@ -278,7 +278,6 @@ class ReportesController extends Controller
         } else {
             $llamadas = $this->filtrarCliente();
         }
-
 
         return view('reportes.filtroscliente', [
             'llamadas' => $llamadas,
