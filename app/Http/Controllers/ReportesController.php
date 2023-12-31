@@ -7,6 +7,7 @@ use App\Models\EmpresaCliente;
 use App\Models\LenguaLEP;
 use App\Models\Llamada;
 use App\Models\Proveedor;
+use App\Models\Sede;
 use App\Models\TipoRcp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -238,7 +239,7 @@ class ReportesController extends Controller
             $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
             $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
             $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
-            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();      
+            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
             $llamada->duracion = Carbon::parse($llamada->horaInicio)->diffInMinutes(Carbon::parse($llamada->horaFin));
         }
 
@@ -415,6 +416,89 @@ class ReportesController extends Controller
                 ];
             }
         }
+        return ($llamadasAgrupadas);
+    }
+
+    public function porSede(Request $request)
+    {
+        $filters = [];
+        $filters['column'] = 'sede';
+        $filters['value'] = $request->sede;
+        if ($request->startdate !== null && $request->enddate !== null) {
+            $filters['dates'] = [
+                'startdate' => $request->startdate,
+                'enddate' => $request->enddate
+            ];
+        }
+
+
+        if ($filters) {
+            $llamadas = $this->filtrarSede($filters);
+        } else {
+            $llamadas = $this->filtrarSede();
+        }
+
+        return view('reportes.filtrosede', [
+            'llamadas' => $llamadas,
+            'sedes' => Sede::latest()->get(),
+        ]);
+    }
+
+    private function filtrarSede($filters = null)
+    {
+        // Llama base de datos y devuleve todos los objetos llamada sin filtros pero con relaciones
+        if (!$filters) {
+            $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo', 'users.sede')
+                ->join('users', 'llamadas.interpreterID', '=', 'users.id')
+                ->get();
+        }
+
+        // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro y relaciones
+        else {
+            // consulta si hay filtros fecha
+            if (!array_key_exists('dates', $filters)) {
+                // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'column' => 'lenguaLEP'  (columna bdd) y relaciones
+                $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo', 'users.sede')
+                    ->join('users', 'llamadas.interpreterID', '=', 'users.id')
+                    ->where($filters['column'], $filters['value'])->get();
+            } else {
+                // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'lenguaLEP, fechas siendo columna ' created at y los filtros correspondiente y relaciones
+                $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo', 'users.sede')
+                    ->join('users', 'llamadas.interpreterID', '=', 'users.id')
+                    ->where($filters['column'], $filters['value'])
+                    ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
+            }
+        }
+        
+
+        foreach ($llamadas as $llamada) {
+            $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
+            $llamada->sedeObject = Sede::where('id', $llamada->sede)->first();
+            $llamada->duracion = Carbon::parse($llamada->horaInicio)->diffInMinutes(Carbon::parse($llamada->horaFin));
+        }
+
+
+        $llamadasAgrupadas = [];
+
+        foreach ($llamadas as $llamada) {
+            if (array_key_exists($llamada->sede, $llamadasAgrupadas)) {
+                // Key already exists, update the values
+                $llamadasAgrupadas[$llamada->sede]['llamadasSedeCount'] += 1;
+                //Construyes un array u objecto que necesites para agregar a este segundo array
+                $llamadasAgrupadas[$llamada->sede]['llamadasArray'][] = $llamada;
+            } else {
+                // Key doesn't exist, create a new entry
+                $llamadasAgrupadas[$llamada->sede] = [
+                    'llamadasSedeCount' => 1,
+                    'SedeUsado' => $llamada->sede,
+                    'llamadasArray' => [$llamada]
+                ];
+            }
+        }
+
         return ($llamadasAgrupadas);
     }
 

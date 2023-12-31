@@ -16,6 +16,7 @@
     <a class="btn btn-primary" href="{{ route('reportes.porCategoria') }}">Filtrar por Categoría</a>
     <a class="btn btn-primary" href="{{ route('reportes.porCliente') }}">Filtrar por Cliente</a>
     <a class="btn btn-primary" href="{{ route('reportes.porProveedor') }}">Filtrar por Proveedor</a>
+    <a class="btn btn-primary" href="{{ route('reportes.porSede') }}">Filtrar por Sede</a>
     <a class="btn btn-primary" href="{{ route('reportes.conRcp') }}">Llamadas Reportadas</a>
 </div>
 @endsection
