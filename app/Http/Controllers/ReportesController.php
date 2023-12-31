@@ -57,7 +57,7 @@ class ReportesController extends Controller
     {
         // Llama base de datos y devuleve todos los objetos llamada sin filtros pero con relaciones
         if (!$filters) {
-            $llamadas = Llamada::select('*')
+            $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'llamadas.lenguaLEP', 'tipo')
                 ->join('lengua_l_e_p_s', 'llamadas.lenguaLEP', '=', 'lengua_l_e_p_s.id')->get();
         }
 
@@ -66,12 +66,12 @@ class ReportesController extends Controller
             // consulta si hay filtros fecha
             if (!array_key_exists('dates', $filters)) {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'column' => 'lenguaLEP'  (columna bdd) y relaciones
-                $llamadas = Llamada::select('*')
+                $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'llamadas.lenguaLEP', 'tipo')
                     ->join('lengua_l_e_p_s', 'llamadas.lenguaLEP', '=', 'lengua_l_e_p_s.id')
                     ->where($filters['column'], $filters['value'])->get();
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'lenguaLEP, fechas siendo columna ' created at y los filtros correspondiente y relaciones
-                $llamadas = Llamada::select('*')
+                $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'llamadas.lenguaLEP', 'tipo')
                     ->join('lengua_l_e_p_s', 'llamadas.lenguaLEP', '=', 'lengua_l_e_p_s.id')
                     ->where($filters['column'], $filters['value'])
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
@@ -83,6 +83,7 @@ class ReportesController extends Controller
             $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
             $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
             $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
+            $llamada->duracion = Carbon::parse($llamada->horaInicio)->diffInMinutes(Carbon::parse($llamada->horaFin));
         }
 
         $llamadasAgrupadas = [];
@@ -134,7 +135,7 @@ class ReportesController extends Controller
     {
         // Llama base de datos y devuleve todos los objetos llamada sin filtros pero con relaciones
         if (!$filters) {
-            $llamadas = Llamada::select('*')
+            $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'llamadas.proveedor', 'lenguaLEP', 'tipo')
                 ->join('proveedors', 'llamadas.proveedor', '=', 'proveedors.id')->get();
         }
 
@@ -143,12 +144,12 @@ class ReportesController extends Controller
             // consulta si hay filtros fecha
             if (!array_key_exists('dates', $filters)) {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'column' => 'proveedor'  (columna bdd) y relaciones
-                $llamadas = Llamada::select('*')
+                $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'llamadas.proveedor', 'lenguaLEP', 'tipo')
                     ->join('proveedors', 'llamadas.proveedor', '=', 'proveedors.id')
                     ->where($filters['column'], $filters['value'])->get();
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'proveedor, fechas siendo columna ' created at y los filtros correspondiente y relaciones
-                $llamadas = Llamada::select('*')
+                $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'llamadas.proveedor', 'lenguaLEP', 'tipo')
                     ->join('proveedors', 'llamadas.proveedor', '=', 'proveedors.id')
                     ->where($filters['column'], $filters['value'])
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
@@ -160,6 +161,7 @@ class ReportesController extends Controller
             $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
             $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
             $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
+            $llamada->duracion = Carbon::parse($llamada->horaInicio)->diffInMinutes(Carbon::parse($llamada->horaFin));
         }
 
         $llamadasAgrupadas = [];
@@ -236,8 +238,7 @@ class ReportesController extends Controller
             $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
             $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
             $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
-            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
-            
+            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();      
             $llamada->duracion = Carbon::parse($llamada->horaInicio)->diffInMinutes(Carbon::parse($llamada->horaFin));
         }
 
@@ -288,7 +289,7 @@ class ReportesController extends Controller
     {
         // Llama base de datos y devuleve todos los objetos llamada sin filtros pero con relaciones
         if (!$filters) {
-            $llamadas = Llamada::select('*')
+            $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'llamadas.lenguaLEP', 'tipo')
                 ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')->get();
         }
 
@@ -297,14 +298,14 @@ class ReportesController extends Controller
             // consulta si hay filtros fecha
             if (!array_key_exists('dates', $filters)) {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'column' => 'empresaCliente'  (columna bdd) y relaciones
-                $llamadas = Llamada::select('*')
+                $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'llamadas.lenguaLEP', 'tipo')
                     ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')
                     ->where($filters['column'], $filters['value'])->get();
 
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 
                 //'empresaCliente, fechas siendo columna ' created at y los filtros correspondiente y relaciones
-                $llamadas = Llamada::select('*')
+                $llamadas = Llamada::select('llamadas.id', 'llamadas.interpreterID', 'fecha', 'horaInicio', 'horaFin', 'empresaCliente', 'proveedor', 'llamadas.lenguaLEP', 'tipo')
                     ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')
                     ->where($filters['column'], $filters['value'])
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
@@ -316,6 +317,7 @@ class ReportesController extends Controller
             $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
             $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
             $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
+            $llamada->duracion = Carbon::parse($llamada->horaInicio)->diffInMinutes(Carbon::parse($llamada->horaFin));
         }
 
         $llamadasAgrupadas = [];

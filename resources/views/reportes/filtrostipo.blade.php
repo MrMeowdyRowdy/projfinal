@@ -45,11 +45,12 @@
     </div>
 
     <table class="table table-bordered">
-        <tr>
-            <th width="1%">No</th>
+    <tr>
+            <th width="1%">ID Llamada</th>
             <th>Fecha</th>
             <th>Interpreter ID</th>
-            <th>Duración en Minutos</th>
+            <th>Hora Inicio</th>
+            <th>Duración minutos</th>
             <th>Cliente</th>
             <th>Proveedor</th>
             <th>Lengua LEP</th>
@@ -61,6 +62,7 @@
             <td>{{ $llamadaObject->id }}</td>
             <td>{{ $llamadaObject->fecha }}</td>
             <td>{{ $llamadaObject->interpreterID }}</td>
+            <td>{{ $llamadaObject->horaInicio }}</td>
             <td>{{ $llamadaObject->duracion }}</td>
             <td>{{ $llamadaObject->empresaClienteObject->nombre }}</td>
             <td>{{ $llamadaObject->proveedorObject->nombre }}</td>
