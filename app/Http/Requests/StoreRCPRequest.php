@@ -24,7 +24,8 @@ class StoreRCPRequest extends FormRequest
         return [
             'llamadaID' => 'required|integer',
             'tipo' => 'required',
-            'mensaje' => 'required'
+            'mensaje' => 'required',
+            'catastrofico' => 'required'
         ];
     }
 }

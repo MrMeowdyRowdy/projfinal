@@ -14,31 +14,19 @@ class CreateSedes extends Seeder
     public function run(): void
     {
         $sede = Sede::create([
-            'sede' => 'ECU',
+            'sede' => 'Ecuador',
         ]);
         $sede = Sede::create([
-            'sede' => 'COL',
+            'sede' => 'Colombia',
         ]);
         $sede = Sede::create([
-            'sede' => 'PER',
+            'sede' => 'Perú',
         ]);
         $sede = Sede::create([
-            'sede' => 'GUA',
+            'sede' => 'Guatemala',
         ]);
         $sede = Sede::create([
-            'sede' => 'ECU',
-        ]);
-        $sede = Sede::create([
-            'sede' => 'COL',
-        ]);
-        $sede = Sede::create([
-            'sede' => 'PER',
-        ]);
-        $sede = Sede::create([
-            'sede' => 'PAN',
-        ]);
-        $sede = Sede::create([
-            'sede' => 'NIC',
+            'sede' => 'Panamá',
         ]);
     }
 }

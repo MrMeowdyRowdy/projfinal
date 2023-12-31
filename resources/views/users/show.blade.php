@@ -6,7 +6,6 @@
     <div class="lead">
 
     </div>
-
     <section class="container mt-4">
         <p>
             CRID: {{ $user->id }}
@@ -15,7 +14,7 @@
             Cédula: {{ $user->nroDocIdentificacion }}
         </p>
         <p>
-            Sede: {{ $user->sede }}
+            Sede: {{ $user->sedeObject->sede }}
         </p>
         <p>
             Apellido: {{ $user->apellido }}
@@ -33,13 +32,13 @@
             Rackspace: {{ $user->emailRackspace }}
         </p>
         <p>
-            Tiempo completo: {{ $user->fullTime }}
+            Tiempo completo: {{ $user->fullTimeObject->fullTime }}
         </p>
         <p>
-            Categoría: {{ $user->categoria }}
+            Categoría: {{ $user->categoriaObject->categoria }}
         </p>
         <p>
-            Horario: {{ $user->horario }}
+            Horario: {{ $user->horarioObject->detalle }}
         </p>
         <p>
             Username: {{ $user->username }}

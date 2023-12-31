@@ -23,6 +23,11 @@ class UsersController extends Controller
     public function index() 
     {
         $users = User::latest()->paginate(10);
+        foreach ($users as $user) {
+            $user->sedeObject = Sede::where('id', $user->sede)->first();
+            $user->fullTimeObject = FullTime::where('id', $user->fullTime)->first();
+            $user->categoriaObject = Categoria::where('id', $user->categoria)->first();
+        }
 
         return view('users.index', compact('users'));
     }
@@ -72,6 +77,10 @@ class UsersController extends Controller
      */
     public function show(User $user) 
     {
+        $user->sedeObject = Sede::where('id', $user->sede)->first();
+        $user->fullTimeObject = FullTime::where('id', $user->fullTime)->first();
+        $user->categoriaObject = Categoria::where('id', $user->categoria)->first();
+        $user->horarioObject = Horario::where('id', $user->horario)->first();
         return view('users.show', [
             'user' => $user
         ]);

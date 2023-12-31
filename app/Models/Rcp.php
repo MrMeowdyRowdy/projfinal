@@ -13,6 +13,7 @@ class Rcp extends Model
         'interpreterID',
         'llamadaID',
         'tipo',
+        'catastrofico',
         'mensaje'
     ];
 
@@ -25,6 +26,9 @@ class Rcp extends Model
     }
 
     public function tipo(){
-        return $this->hasOne(TipoRcp::class,'tipo');
+        return $this->hasOne(TipoRcp::class,'id');
+    }
+    public function catastrofico(){
+        return $this->hasOne(Catastrofico::class,'id');
     }
 }

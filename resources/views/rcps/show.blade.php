@@ -15,7 +15,7 @@
             Interpreter ID: {{ $rcp->interpreterID }}
         </p>
         <p>
-            Tipo de problema : {{ $rcp->tipo }}
+            Tipo de problema : {{ $rcp->rcpTipoObject->tipo }}
         </p>
         <p>
             Mensaje: {{ $rcp->mensaje }}

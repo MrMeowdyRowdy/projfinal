@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catastrofico;
 use App\Models\TipoRcp;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRCPRequest;
@@ -20,6 +21,10 @@ class RcpsController extends Controller
     {
         $rcps = Rcp::latest()->paginate(10);
 
+        foreach ($rcps as $rcp) {
+            $rcp->rcpTipoObject = TipoRcp::where('id', $rcp->tipo)->first();
+        }
+
         return view('rcps.index', compact('rcps'));
     }
 
@@ -32,6 +37,7 @@ class RcpsController extends Controller
     {
         return view('rcps.create', [
             'tipoRcps' => TipoRcp::latest()->get(),
+            'catastroficos' => Catastrofico::latest()->get(),
             'llamadaID' => $request['id'],
         ]);
     }
@@ -48,7 +54,7 @@ class RcpsController extends Controller
     {
         //For demo purposes only. When creating rcp or inviting a rcp
         // you should create a generated random password and email it to the rcp
-        Rcp::create(array_merge($request->only('llamadaID', 'tipo', 'mensaje'), [
+        Rcp::create(array_merge($request->only('llamadaID', 'tipo', 'catastrofico','mensaje'), [
             'interpreterID' => auth()->id()
         ]));
         return redirect()->route('rcps.index')
@@ -64,6 +70,7 @@ class RcpsController extends Controller
      */
     public function show(Rcp $rcp)
     {
+        $rcp->rcpTipoObject = TipoRcp::where('id', $rcp->tipo)->first();
         return view('rcps.show', [
             'rcp' => $rcp
         ]);

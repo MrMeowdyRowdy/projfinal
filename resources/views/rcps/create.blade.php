@@ -34,6 +34,20 @@
                 @endif
             </div>
             <div class="mb-3">
+                <label for="catastrofico" class="form-label">Llamada continuada</label>
+                <select class="form-control" name="catastrofico" required>
+                    <option value="">Pudiste continuar la llamada?</option>
+                    @foreach($catastroficos as $catastrofico)
+                    <option value="{{ $catastrofico->id }}">{{
+                        $catastrofico->catastrofico }}
+                    </option>
+                    @endforeach
+                </select>
+                @if ($errors->has('catastrofico'))
+                <span class="text-danger text-left">{{ $errors->first('catastrofico') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
                 <label for="tipo" class="form-label">Comentarios</label>
                 <input value="{{ old('mensaje') }}" type="text" class="form-control" name="mensaje"
                     placeholder="Explica lo ocurrido" required>

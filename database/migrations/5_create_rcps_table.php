@@ -15,9 +15,11 @@ return new class extends Migration {
             $table->unsignedBigInteger('interpreterID');
             $table->unsignedBigInteger('llamadaID');
             $table->unsignedBigInteger('tipo');
+            $table->unsignedBigInteger('catastrofico');
             $table->foreign('interpreterID')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('llamadaID')->references('id')->on('llamadas')->onDelete('cascade');
             $table->foreign('tipo')->references('id')->on('tipo_rcps')->onDelete('cascade');
+            $table->foreign('catastrofico')->references('id')->on('tipo_rcps')->onDelete('cascade');
             $table->string('mensaje')->nullable();
             $table->timestamps();
         });

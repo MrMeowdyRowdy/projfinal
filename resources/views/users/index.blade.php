@@ -33,12 +33,12 @@
             @foreach($users as $user)
             <tr>
                 <th scope="row">{{ $user->id }}</th>
-                <td>{{ $user->sede }}</td>
+                <td>{{ $user->sedeObject->sede }}</td>
                 <td>{{ $user->apellido }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->emailRackspace }}</td>
-                <td>{{ $user->fullTime }}</td>
-                <td>{{ $user->categoria }}</td>
+                <td>{{ $user->fullTimeObject->fullTime }}</td>
+                <td>{{ $user->categoriaObject->categoria  }}</td>
                 <td>
                     @foreach($user->roles as $role)
                     <span class="badge bg-primary">{{ $role->name }}</span>

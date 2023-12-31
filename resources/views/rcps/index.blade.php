@@ -27,7 +27,7 @@
             <td>{{ $rcp->id }}</td>
             <td>{{ $rcp->llamadaID }}</td>
             <td>{{ $rcp->interpreterID }}</td>
-            <td>{{ $rcp->tipo}}</td>
+            <td>{{ $rcp->rcpTipoObject->tipo }}</td>
             <td>
                 <a class="btn btn-info btn-sm" href="{{ route('rcps.show', $rcp->id) }}">Detalles</a>
             </td>
