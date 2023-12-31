@@ -20,6 +20,7 @@
             <th>Id Llamada</th>
             <th>Interpreter ID</th>
             <th>Tipo</th>
+            <th>Catastrófico</th>
             <th width="3%" colspan="3">Acciones</th>
         </tr>
         @foreach ($rcps as $key => $rcp)
@@ -28,6 +29,7 @@
             <td>{{ $rcp->llamadaID }}</td>
             <td>{{ $rcp->interpreterID }}</td>
             <td>{{ $rcp->rcpTipoObject->tipo }}</td>
+            <td>{{ $rcp->catastroficoObject->catastrofico }}</td>
             <td>
                 <a class="btn btn-info btn-sm" href="{{ route('rcps.show', $rcp->id) }}">Detalles</a>
             </td>

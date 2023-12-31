@@ -23,6 +23,7 @@ class RcpsController extends Controller
 
         foreach ($rcps as $rcp) {
             $rcp->rcpTipoObject = TipoRcp::where('id', $rcp->tipo)->first();
+            $rcp->catastroficoObject = Catastrofico::where('id', $rcp->catastrofico)->first();
         }
 
         return view('rcps.index', compact('rcps'));
@@ -71,6 +72,7 @@ class RcpsController extends Controller
     public function show(Rcp $rcp)
     {
         $rcp->rcpTipoObject = TipoRcp::where('id', $rcp->tipo)->first();
+        $rcp->catastroficoObject = Catastrofico::where('id', $rcp->catastrofico)->first();
         return view('rcps.show', [
             'rcp' => $rcp
         ]);
@@ -88,6 +90,7 @@ class RcpsController extends Controller
 
         return view('rcps.edit', [
             'rcp' => $rcp,
+            'catastroficos' => Catastrofico::latest()->get(),
             'tipoRcps' => TipoRcp::latest()->get()])
         ;
     }

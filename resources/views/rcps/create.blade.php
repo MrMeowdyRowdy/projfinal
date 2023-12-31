@@ -34,9 +34,9 @@
                 @endif
             </div>
             <div class="mb-3">
-                <label for="catastrofico" class="form-label">Llamada continuada</label>
+                <label for="catastrofico" class="form-label">Error catastrofico</label>
                 <select class="form-control" name="catastrofico" required>
-                    <option value="">Pudiste continuar la llamada?</option>
+                    <option value="">El error te impidió continuar la llamada?</option>
                     @foreach($catastroficos as $catastrofico)
                     <option value="{{ $catastrofico->id }}">{{
                         $catastrofico->catastrofico }}

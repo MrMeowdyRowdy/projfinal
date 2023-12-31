@@ -23,15 +23,29 @@
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo de problema</label>
                 <select class="form-control" name="tipo" required>
-                    <option value="">Elige el tipoRcp de llamada atendida</option>
+                    <option value="">Elige el tipo de problema de llamada atendida</option>
                     @foreach($tipoRcps as $tipoRcp)
-                    <option value="{{ $tipoRcp->id }}" {{ ( $tipoRcp->tipo == $rcp->tipo) ? 'selected' : '' }}>{{
+                    <option value="{{ $tipoRcp->id }}" {{ ( $tipoRcp->id == $rcp->tipo) ? 'selected' : '' }}>{{
                         $tipoRcp->tipo }}
                     </option>
                     @endforeach
                 </select>
                 @if ($errors->has('tipo'))
                 <span class="text-danger text-left">{{ $errors->first('tipo') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
+                <label for="catastrofico" class="form-label">Error catastrófico</label>
+                <select class="form-control" name="catastrofico" required>
+                    <option value="">El error te impidió continuar la llamada??</option>
+                    @foreach($catastroficos as $catastrofico)
+                    <option value="{{ $catastrofico->id }}" {{ ( $catastrofico->id == $rcp->catastrofico) ? 'selected' : '' }}>{{
+                        $catastrofico->catastrofico }}
+                    </option>s
+                    @endforeach
+                </select>
+                @if ($errors->has('catastrofico'))
+                <span class="text-danger text-left">{{ $errors->first('catastrofico') }}</span>
                 @endif
             </div>
             <div class="mb-3">

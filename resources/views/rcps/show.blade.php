@@ -18,6 +18,9 @@
             Tipo de problema : {{ $rcp->rcpTipoObject->tipo }}
         </p>
         <p>
+            Catastrófico : {{  $rcp->catastroficoObject->catastrofico  }}
+        </p>
+        <p>
             Mensaje: {{ $rcp->mensaje }}
         </p>
     </section>
