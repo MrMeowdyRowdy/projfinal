@@ -48,13 +48,9 @@ class RcpsController extends Controller
     {
         //For demo purposes only. When creating rcp or inviting a rcp
         // you should create a generated random password and email it to the rcp
-        dd($request,$rcp);
         Rcp::create(array_merge($request->only('llamadaID', 'tipo', 'mensaje'), [
             'interpreterID' => auth()->id()
         ]));
-
-        
-
         return redirect()->route('rcps.index')
             ->withSuccess(__('Rcp registrada correctamente.'));
     }
