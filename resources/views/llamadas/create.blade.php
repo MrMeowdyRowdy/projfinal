@@ -31,7 +31,7 @@
                 <select class="form-control" name="empresaCliente" required>
                     <option value="">Elija la empresa cliente</option>
                     @foreach($empresa_clientes as $empresa_cliente)
-                    <option value="{{ $empresa_cliente->id }}" >{{
+                    <option value="{{ $empresa_cliente->id }}">{{
                         $empresa_cliente->nombre }}
                     </option>
                     @endforeach
@@ -59,7 +59,7 @@
                 <select class="form-control" name="lenguaLEP" required>
                     <option value="">Elige el lenguaje del LEP</option>
                     @foreach($lenguaLEPs as $lenguaLEP)
-                    <option value="{{ $lenguaLEP->id }}" >{{
+                    <option value="{{ $lenguaLEP->id }}">{{
                         $lenguaLEP->lengua }}
                     </option>
                     @endforeach

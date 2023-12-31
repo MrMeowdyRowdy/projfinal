@@ -17,19 +17,19 @@ class FullTimeController extends Controller
     {
 
     }
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
-        $full_times = FullTime::orderBy('id','DESC')->paginate(5);
-        return view('full_times.index',compact('full_times'))
+    {
+        $full_times = FullTime::orderBy('id', 'DESC')->paginate(5);
+        return view('full_times.index', compact('full_times'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,7 +40,7 @@ class FullTimeController extends Controller
         $permissions = Permission::get();
         return view('full_times.create', compact('permissions'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -53,12 +53,12 @@ class FullTimeController extends Controller
             'name' => 'required|unique:full_times,name',
             'permission' => 'required',
         ]);
-    
+
         $full_time = FullTime::create(['name' => $request->get('name')]);
         $full_time->syncPermissions($request->get('permission'));
-    
+
         return redirect()->route('full_times.index')
-                        ->with('success','FullTime created successfully');
+            ->with('success', 'FullTime created successfully');
     }
 
     /**
@@ -71,10 +71,10 @@ class FullTimeController extends Controller
     {
         $full_time = $full_time;
         $full_timePermissions = $full_time->permissions;
-    
+
         return view('full_times.show', compact('full_time', 'full_timePermissions'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -86,10 +86,10 @@ class FullTimeController extends Controller
         $full_time = $full_time;
         $full_timePermissions = $full_time->permissions->pluck('name')->toArray();
         $permissions = Permission::get();
-    
+
         return view('full_times.edit', compact('full_time', 'full_timePermissions', 'permissions'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -103,13 +103,13 @@ class FullTimeController extends Controller
             'name' => 'required',
             'permission' => 'required',
         ]);
-        
+
         $full_time->update($request->only('name'));
-    
+
         $full_time->syncPermissions($request->get('permission'));
-    
+
         return redirect()->route('full_times.index')
-                        ->with('success','FullTime updated successfully');
+            ->with('success', 'FullTime updated successfully');
     }
 
     /**
@@ -123,6 +123,6 @@ class FullTimeController extends Controller
         $full_time->delete();
 
         return redirect()->route('full_times.index')
-                        ->with('success','FullTime deleted successfully');
+            ->with('success', 'FullTime deleted successfully');
     }
 }

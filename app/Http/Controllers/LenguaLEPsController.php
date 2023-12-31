@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class LenguaLEPsController extends Controller
 {
-     /**
+    /**
      * Display all lenguaLEPs
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $lenguaLEPs = LenguaLEP::latest()->paginate(10);
 
@@ -24,7 +24,7 @@ class LenguaLEPsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         return view('lenguaLEPs.create');
     }
@@ -37,7 +37,7 @@ class LenguaLEPsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(LenguaLEP $lenguaLEP, StoreLenguaLEPRequest $request) 
+    public function store(LenguaLEP $lenguaLEP, StoreLenguaLEPRequest $request)
     {
         //For demo purposes only. When creating lenguaLEP or inviting a lenguaLEP
         // you should create a generated random password and email it to the lenguaLEP
@@ -54,7 +54,7 @@ class LenguaLEPsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(LenguaLEP $lenguaLEP) 
+    public function show(LenguaLEP $lenguaLEP)
     {
         return view('lenguaLEPs.show', [
             'lenguaLEP' => $lenguaLEP
@@ -68,7 +68,7 @@ class LenguaLEPsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(LenguaLEP $lenguaLEP) 
+    public function edit(LenguaLEP $lenguaLEP)
     {
 
         return view('lenguaLEPs.edit', [
@@ -83,7 +83,7 @@ class LenguaLEPsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(LenguaLEP $lenguaLEP, UpdateLenguaLEPRequest $request) 
+    public function update(LenguaLEP $lenguaLEP, UpdateLenguaLEPRequest $request)
     {
         $lenguaLEP->update($request->validated());
 
@@ -98,7 +98,7 @@ class LenguaLEPsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LenguaLEP $lenguaLEP) 
+    public function destroy(LenguaLEP $lenguaLEP)
     {
         $lenguaLEP->delete();
 

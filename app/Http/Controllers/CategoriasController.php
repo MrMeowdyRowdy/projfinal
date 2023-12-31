@@ -23,7 +23,7 @@ class CategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) 
+    public function index(Request $request)
     {
         $categorias = Categoria::orderBy('id', 'DESC')->paginate(5);
         return view('categorias.index', compact('categorias'))

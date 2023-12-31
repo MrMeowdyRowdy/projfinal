@@ -28,11 +28,11 @@ class RcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request) 
+    public function create(Request $request)
     {
         return view('rcps.create', [
             'tipoRcps' => TipoRcp::latest()->get(),
-            'llamadaID'=> $request['id'],
+            'llamadaID' => $request['id'],
         ]);
     }
 

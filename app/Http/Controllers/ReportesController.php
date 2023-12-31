@@ -74,13 +74,16 @@ class ReportesController extends Controller
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
+
         foreach ($llamadas as $llamada) {
-            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
-            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
-            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
-            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+            $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
         }
+
         $llamadasAgrupadas = [];
+
         foreach ($llamadas as $llamada) {
             if (array_key_exists($llamada->lengua, $llamadasAgrupadas)) {
                 // Key already exists, update the values
@@ -147,13 +150,16 @@ class ReportesController extends Controller
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
+
         foreach ($llamadas as $llamada) {
-            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
-            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
-            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
-            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+            $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
         }
+
         $llamadasAgrupadas = [];
+
         foreach ($llamadas as $llamada) {
             if (array_key_exists($llamada->proveedor, $llamadasAgrupadas)) {
                 // Key already exists, update the values
@@ -221,10 +227,10 @@ class ReportesController extends Controller
             }
         }
         foreach ($llamadas as $llamada) {
-            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
-            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
-            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
-            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+            $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
         }
         $llamadasAgrupadas = [];
         foreach ($llamadas as $llamada) {
@@ -283,7 +289,7 @@ class ReportesController extends Controller
                 $llamadas = Llamada::select('*')
                     ->join('empresa_clientes', 'llamadas.empresaCliente', '=', 'empresa_clientes.id')
                     ->where($filters['column'], $filters['value'])->get();
-                
+
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 
                 //'empresaCliente, fechas siendo columna ' created at y los filtros correspondiente y relaciones
@@ -293,13 +299,16 @@ class ReportesController extends Controller
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
+
         foreach ($llamadas as $llamada) {
-            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
-            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
-            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
-            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+            $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
         }
+
         $llamadasAgrupadas = [];
+
         foreach ($llamadas as $llamada) {
             if (array_key_exists($llamada->empresaCliente, $llamadasAgrupadas)) {
                 // Key already exists, update the values
@@ -313,10 +322,8 @@ class ReportesController extends Controller
                     'ClienteUsado' => $llamada->empresaCliente,
                     'llamadasArray' => [$llamada]
                 ];
-
             }
         }
-
         return ($llamadasAgrupadas);
     }
 

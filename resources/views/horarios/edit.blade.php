@@ -21,16 +21,16 @@
             </div>
             <div class="mb-3">
                 <label for="horaFin" class="form-label">Hora Fin</label>
-                <input value="{{ $horario->horaFin }}" type="time" class="form-control" name="horaFin" placeholder="00:00"
-                    required>
+                <input value="{{ $horario->horaFin }}" type="time" class="form-control" name="horaFin"
+                    placeholder="00:00" required>
                 @if ($errors->has('horaFin'))
                 <span class="text-danger text-left">{{ $errors->first('horaFin') }}</span>
                 @endif
             </div>
             <div class="mb-3">
                 <label for="detalle" class="form-label">Detalle</label>
-                <input value="{{ $horario->detalle }}" type="text" class="form-control" name="detalle"
-                    placeholder="SPA" required>
+                <input value="{{ $horario->detalle }}" type="text" class="form-control" name="detalle" placeholder="SPA"
+                    required>
                 @if ($errors->has('detalle'))
                 <span class="text-danger text-left">{{ $errors->first('detalle') }}</span>
                 @endif

@@ -14,7 +14,7 @@ class EmpresaClientesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $empresaClientes = EmpresaCliente::latest()->paginate(10);
 
@@ -26,7 +26,7 @@ class EmpresaClientesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         return view('empresaClientes.create');
     }
@@ -39,7 +39,7 @@ class EmpresaClientesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(EmpresaCliente $empresaCliente, StoreEmpresaClientesRequest $request) 
+    public function store(EmpresaCliente $empresaCliente, StoreEmpresaClientesRequest $request)
     {
         //For demo purposes only. When creating empresaCliente or inviting a empresaCliente
         // you should create a generated random password and email it to the empresaCliente
@@ -56,7 +56,7 @@ class EmpresaClientesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(EmpresaCliente $empresaCliente) 
+    public function show(EmpresaCliente $empresaCliente)
     {
         return view('empresaClientes.show', [
             'empresaCliente' => $empresaCliente
@@ -70,7 +70,7 @@ class EmpresaClientesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(EmpresaCliente $empresaCliente) 
+    public function edit(EmpresaCliente $empresaCliente)
     {
 
         return view('empresaClientes.edit', [
@@ -85,7 +85,7 @@ class EmpresaClientesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(EmpresaCliente $empresaCliente, UpdateEmpresaClientesRequest $request) 
+    public function update(EmpresaCliente $empresaCliente, UpdateEmpresaClientesRequest $request)
     {
         $empresaCliente->update($request->validated());
 
@@ -100,7 +100,7 @@ class EmpresaClientesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EmpresaCliente $empresaCliente) 
+    public function destroy(EmpresaCliente $empresaCliente)
     {
         $empresaCliente->delete();
 

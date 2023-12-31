@@ -15,7 +15,7 @@ class TipoRcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $tipoRcps = TipoRcp::latest()->paginate(10);
 
@@ -27,7 +27,7 @@ class TipoRcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         return view('tipoRcps.create');
     }
@@ -40,7 +40,7 @@ class TipoRcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(TipoRcp $tipoRcp, StoreTipoRcpRequest $request) 
+    public function store(TipoRcp $tipoRcp, StoreTipoRcpRequest $request)
     {
         //For demo purposes only. When creating tipoRcp or inviting a tipoRcp
         // you should create a generated random password and email it to the tipoRcp
@@ -57,7 +57,7 @@ class TipoRcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoRcp $tipoRcp) 
+    public function show(TipoRcp $tipoRcp)
     {
         return view('tipoRcps.show', [
             'tipoRcp' => $tipoRcp
@@ -71,13 +71,14 @@ class TipoRcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoRcp $tipoRcp) 
+    public function edit(TipoRcp $tipoRcp)
     {
 
         return view('tipoRcps.edit', [
             'tipoRcp' => $tipoRcp])
         ;
     }
+    
     /**
      * Update tipoRcp data
      * 
@@ -86,7 +87,7 @@ class TipoRcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(TipoRcp $tipoRcp, UpdateTipoRcpRequest $request) 
+    public function update(TipoRcp $tipoRcp, UpdateTipoRcpRequest $request)
     {
         $tipoRcp->update($request->validated());
 
@@ -101,7 +102,7 @@ class TipoRcpsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoRcp $tipoRcp) 
+    public function destroy(TipoRcp $tipoRcp)
     {
         $tipoRcp->delete();
 

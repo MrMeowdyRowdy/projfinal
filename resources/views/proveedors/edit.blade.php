@@ -8,8 +8,8 @@
     </div>
 
     <div class="container mt-4">
-    <form method="POST" action="{{ route('proveedors.update', $proveedor->id) }}">
-                @method('patch')
+        <form method="POST" action="{{ route('proveedors.update', $proveedor->id) }}">
+            @method('patch')
             @csrf
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre del proveedor</label>
@@ -19,7 +19,7 @@
                 <span class="text-danger text-left">{{ $errors->first('nombre') }}</span>
                 @endif
             </div>
-            
+
 
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
             <a href="{{ route('proveedors.index') }}" class="btn btn-default">Atrás</a>

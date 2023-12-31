@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\StoreProveedorsRequest;
 use App\Http\Requests\UpdateProveedorsRequest;
 use App\Models\Proveedor;
@@ -9,12 +10,12 @@ use Illuminate\Http\Request;
 
 class ProveedorsController extends Controller
 {
-     /**
+    /**
      * Display all proveedors
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $proveedors = Proveedor::latest()->paginate(10);
 
@@ -26,7 +27,7 @@ class ProveedorsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         return view('proveedors.create');
     }
@@ -39,7 +40,7 @@ class ProveedorsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(Proveedor $proveedor, StoreProveedorsRequest $request) 
+    public function store(Proveedor $proveedor, StoreProveedorsRequest $request)
     {
         //For demo purposes only. When creating proveedor or inviting a proveedor
         // you should create a generated random password and email it to the proveedor
@@ -56,7 +57,7 @@ class ProveedorsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(Proveedor $proveedor) 
+    public function show(Proveedor $proveedor)
     {
         return view('proveedors.show', [
             'proveedor' => $proveedor
@@ -70,7 +71,7 @@ class ProveedorsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proveedor $proveedor) 
+    public function edit(Proveedor $proveedor)
     {
 
         return view('proveedors.edit', [
@@ -85,7 +86,7 @@ class ProveedorsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(Proveedor $proveedor, UpdateProveedorsRequest $request) 
+    public function update(Proveedor $proveedor, UpdateProveedorsRequest $request)
     {
         $proveedor->update($request->validated());
 
@@ -100,7 +101,7 @@ class ProveedorsController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proveedor $proveedor) 
+    public function destroy(Proveedor $proveedor)
     {
         $proveedor->delete();
 

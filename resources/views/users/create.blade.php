@@ -12,8 +12,8 @@
             @csrf
             <div class="mb-3">
                 <label for="nroDocIdentificacion" class="form-label">Cédula</label>
-                <input value="{{ old('nroDocIdentificacion') }}" type="text" class="form-control" name="nroDocIdentificacion"
-                    placeholder="1700000000" required>
+                <input value="{{ old('nroDocIdentificacion') }}" type="text" class="form-control"
+                    name="nroDocIdentificacion" placeholder="1700000000" required>
 
                 @if ($errors->has('nroDocIdentificacion'))
                 <span class="text-danger text-left">{{ $errors->first('nroDocIdentificacion') }}</span>

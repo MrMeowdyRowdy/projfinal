@@ -14,7 +14,7 @@ class SedesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index() 
+    public function index()
     {
         $sedes = Sede::latest()->paginate(10);
 
@@ -26,7 +26,7 @@ class SedesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         return view('sedes.create');
     }
@@ -39,7 +39,7 @@ class SedesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(Sede $sede, StoreSedesRequest $request) 
+    public function store(Sede $sede, StoreSedesRequest $request)
     {
         //For demo purposes only. When creating sede or inviting a sede
         // you should create a generated random password and email it to the sede
@@ -56,7 +56,7 @@ class SedesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function show(Sede $sede) 
+    public function show(Sede $sede)
     {
         return view('sedes.show', [
             'sede' => $sede
@@ -70,13 +70,14 @@ class SedesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sede $sede) 
+    public function edit(Sede $sede)
     {
 
         return view('sedes.edit', [
             'sede' => $sede])
         ;
     }
+
     /**
      * Update sede data
      * 
@@ -85,7 +86,7 @@ class SedesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function update(Sede $sede, UpdateSedesRequest $request) 
+    public function update(Sede $sede, UpdateSedesRequest $request)
     {
         $sede->update($request->validated());
 
@@ -100,7 +101,7 @@ class SedesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sede $sede) 
+    public function destroy(Sede $sede)
     {
         $sede->delete();
 

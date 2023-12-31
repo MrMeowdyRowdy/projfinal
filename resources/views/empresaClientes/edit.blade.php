@@ -8,7 +8,7 @@
     </div>
 
     <div class="container mt-4">
-    <form method="POST" action="{{ route('empresaClientes.update', $empresaCliente->id) }}">
+        <form method="POST" action="{{ route('empresaClientes.update', $empresaCliente->id) }}">
             @method('patch')
             @csrf
             <div class="mb-3">

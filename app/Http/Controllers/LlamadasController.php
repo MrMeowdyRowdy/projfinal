@@ -26,10 +26,10 @@ class LlamadasController extends Controller
     {
         $llamadas = Llamada::latest()->paginate(10);
         foreach ($llamadas as $llamada) {
-            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
-            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
-            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
-            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+            $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
+            $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
+            $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
+            $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
         }
         return view('llamadas.index', compact('llamadas'));
     }
@@ -76,11 +76,11 @@ class LlamadasController extends Controller
      */
     public function show(Llamada $llamada)
     {
-        
-            $llamada->empresaClienteObject = EmpresaCliente::where('id',$llamada->empresaCliente)->first();
-            $llamada->proveedorObject = Proveedor::where('id',$llamada->proveedor)->first();
-            $llamada->lenguaLEPObject = LenguaLEP::where('id',$llamada->lenguaLEP)->first();
-            $llamada->categoriaObject = Categoria::where('id',$llamada->tipo)->first();
+
+        $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
+        $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
+        $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
+        $llamada->categoriaObject = Categoria::where('id', $llamada->tipo)->first();
         return view('llamadas.show', [
             'llamada' => $llamada
         ]);

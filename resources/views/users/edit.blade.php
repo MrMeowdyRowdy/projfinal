@@ -13,8 +13,8 @@
             @csrf
             <div class="mb-3">
                 <label for="nroDocIdentificacion" class="form-label">Cédula</label>
-                <input value="{{ $user->nroDocIdentificacion }}" type="text" class="form-control" name="nroDocIdentificacion"
-                    placeholder="1700000000" required>
+                <input value="{{ $user->nroDocIdentificacion }}" type="text" class="form-control"
+                    name="nroDocIdentificacion" placeholder="1700000000" required>
 
                 @if ($errors->has('nroDocIdentificacion'))
                 <span class="text-danger text-left">{{ $errors->first('nroDocIdentificacion') }}</span>
@@ -25,7 +25,7 @@
                 <select class="form-control" name="sede" required>
                     <option value="">Sede</option>
                     @foreach($sedes as $sede)
-                    <option value="{{ $sede->id }}"{{ ( $sede->id == $user->sede) ? 'selected' : ''
+                    <option value="{{ $sede->id }}" {{ ( $sede->id == $user->sede) ? 'selected' : ''
                         }}>{{ $sede->sede }}
                     </option>
                     @endforeach

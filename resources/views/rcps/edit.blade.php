@@ -8,8 +8,8 @@
     </div>
 
     <div class="container mt-4">
-    <form method="POST" action="{{ route('rcps.update', $rcp->id) }}">
-                @method('patch')
+        <form method="POST" action="{{ route('rcps.update', $rcp->id) }}">
+            @method('patch')
             @csrf
             <div class="mb-3">
                 <label for="llamadaID" class="form-label">ID de la Llamada</label>
@@ -42,7 +42,7 @@
                 <span class="text-danger text-left">{{ $errors->first('mensaje') }}</span>
                 @endif
             </div>
-            
+
 
             <button type="submit" class="btn btn-primary">Guardar cambios</button>
             <a href="{{ route('rcps.index') }}" class="btn btn-default">Atrás</a>

@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class Tiposontroller extends Controller
 {
-
     /**
      * Display all tipos
      * 
@@ -77,6 +76,7 @@ class Tiposontroller extends Controller
             'tipo' => $tipo])
         ;
     }
+    
     /**
      * Update tipo data
      * 
