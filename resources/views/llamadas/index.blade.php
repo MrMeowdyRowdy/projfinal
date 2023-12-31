@@ -30,15 +30,15 @@
           </tr>
             @foreach ($llamadas as $key => $llamada)
             <tr>
-                <td>{{ $llamada->id }}</td>
-                <td>{{ $llamada->fecha }}</td>
-                <td>{{ $llamada->interpreterID }}</td>
-                <td>{{ $llamada->horaInicio }}</td>
-                <td>{{ $llamada->horaFin }}</td>
-                <td>{{ $llamada->empresaCliente }}</td>
-                <td>{{ $llamada->proveedor }}</td>
-                <td>{{ $llamada->lenguaLEP }}</td>
-                <td>{{ $llamada->tipo }}</td>
+            <td>{{ $llamada->id }}</td>
+            <td>{{ $llamada->fecha }}</td>
+            <td>{{ $llamada->interpreterID }}</td>
+            <td>{{ $llamada->horaInicio }}</td>
+            <td>{{ $llamada->horaFin }}</td>
+            <td>{{ $llamada->empresaClienteObject->nombre }}</td>
+            <td>{{ $llamada->proveedorObject->nombre }}</td>
+            <td>{{ $llamada->lenguaLEPObject->lengua }}</td>
+            <td>{{ $llamada->categoriaObject->categoria }}</td>
                 <td>
                     <a class="btn btn-info btn-sm" href="{{ route('llamadas.show', $llamada->id) }}">Detalles</a>
                 </td>
