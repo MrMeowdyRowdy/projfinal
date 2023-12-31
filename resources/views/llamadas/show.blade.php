@@ -18,20 +18,17 @@
                 Hora Fin: {{ $llamada->horaFin }}
             </p>
             <p>
-                Cliente: {{ $llamada->empresaCliente }}
+                Cliente: {{ $llamada->empresaClienteObject->nombre }}
             </p>
             <p>
-                Proveedor: {{ $llamada->proveedor }}
+                Proveedor: {{ $llamada->proveedorObject->nombre }}
             </p>
             <p>
-                Lengua LEP: {{ $llamada->lenguaLEP }}
+                Lengua LEP: {{ $llamada->lenguaLEPObject->lengua }}
             </p>
             <p>
-                Tipo: {{ $llamada->tipo }}
+                Tipo: {{ $llamada->categoriaObject->categoria }}
             </p>            
-            <p>
-                Especializacion: {{ $llamada->especializacion }}
-            </p>
         </section>
 
     </div>
