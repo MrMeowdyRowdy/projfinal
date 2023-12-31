@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreRCPRequest;
 use App\Http\Requests\UpdateRCPRequest;
 use App\Models\Rcp;
+use Illuminate\Support\Facades\Auth;
 
 
 class RcpsController extends Controller
@@ -19,8 +20,19 @@ class RcpsController extends Controller
      */
     public function index()
     {
-        $rcps = Rcp::latest()->paginate(10);
-
+        $filters['column'] = 'interpreterID';
+        $filters['value'] = auth()->id();
+        
+        
+        if((Auth::user()->hasRole('TeamLeader')))
+        {
+            $rcps = Rcp::latest()->paginate(10);
+        }
+        else{
+            
+            $rcps = Rcp::select('*')
+                    ->where($filters['column'], $filters['value'])->get();
+        }
         foreach ($rcps as $rcp) {
             $rcp->rcpTipoObject = TipoRcp::where('id', $rcp->tipo)->first();
             $rcp->catastroficoObject = Catastrofico::where('id', $rcp->catastrofico)->first();

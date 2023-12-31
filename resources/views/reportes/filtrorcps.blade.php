@@ -2,14 +2,14 @@
 
 @section('content')
 
-<h1 class="mb-3">Reporte de llamadas por categoria</h1>
+<h1 class="mb-3">Reporte de llamadas por cliente</h1>
 
 <div class="bg-light p-4 rounded">
-    <h1>Llamadas por Categoria</h1>
+    <h1>Llamadas por Cliente</h1>
     <div class="lead">
         Ingresa los parametros por los cuales deseas realizar las busquedas.
         <div class="mb-3">
-            <form method="POST" action="{{route('reportes.porCategoria')}}">
+            <form method="POST" action="{{route('reportes.conRcp')}}">
                 @csrf
                 <label for="startdate" class="form-label">Fecha Inicio</label>
                 <input value="{{ old('startdate') }}" type="date" class="form-control" name="startdate" placeholder="">
@@ -21,20 +21,6 @@
                 @if ($errors->has('enddate'))
                 <span class="text-danger text-left">{{ $errors->first('enddate') }}</span>
                 @endif
-                <div class="mb-3">
-                    <label for="categoria" class="form-label">Categoria de la llamada</label>
-                    <select class="form-control" name="categoria" required>
-                        <option value="">Elige la categoria de la llamada</option>
-                        @foreach($categorias as $categoria)
-                        <option value="{{ $categoria->id }}">{{
-                            $categoria->categoria }}
-                        </option>
-                        @endforeach
-                    </select>
-                    @if ($errors->has('categoria'))
-                    <span class="text-danger text-left">{{ $errors->first('categoria') }}</span>
-                    @endif
-                </div>
         </div>
         <button type="submit" class="btn btn-primary">Buscar</button>
         </form>
@@ -46,10 +32,10 @@
 
     <table class="table table-bordered">
         <tr>
-            <th width="1%">No</th>
+            <th width="1%">ID Llamada</th>
+            <th width="1%">ID RCP</th>
             <th>Fecha</th>
             <th>Interpreter ID</th>
-            <th>Duración en Minutos</th>
             <th>Cliente</th>
             <th>Proveedor</th>
             <th>Lengua LEP</th>
@@ -59,13 +45,13 @@
         @foreach ($llamada['llamadasArray'] as $llamadaObject)
         <tr>
             <td>{{ $llamadaObject->id }}</td>
+            <td>{{ $llamadaObject->idRcp }}</td>
             <td>{{ $llamadaObject->fecha }}</td>
             <td>{{ $llamadaObject->interpreterID }}</td>
-            <td>{{ $llamadaObject->duracion }}</td>
             <td>{{ $llamadaObject->empresaClienteObject->nombre }}</td>
             <td>{{ $llamadaObject->proveedorObject->nombre }}</td>
             <td>{{ $llamadaObject->lenguaLEPObject->lengua }}</td>
-            <td>{{ $llamadaObject->categoriaObject->categoria }}</td>
+            <td>{{ $llamadaObject->tipoObject->tipo }}</td>
         </tr>
         @endforeach
         @endforeach

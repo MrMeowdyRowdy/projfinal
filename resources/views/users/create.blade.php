@@ -33,6 +33,15 @@
                 @endif
             </div>
             <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input value="{{ old('apellido') }}" type="text" class="form-control" name="apellido"
+                    placeholder="Apellido" required>
+
+                @if ($errors->has('apellido'))
+                <span class="text-danger text-left">{{ $errors->first('apellido') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
                 <label for="name" class="form-label">Nombre</label>
                 <input value="{{ old('name') }}" type="text" class="form-control" name="name" placeholder="Nombre"
                     required>
@@ -120,7 +129,7 @@
                 <select class="form-control" name="role" required>
                     <option value="">Select role</option>
                     @foreach($roles as $role)
-                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                    <option value="{{ $role->name}}">{{ $role->name }}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('role'))

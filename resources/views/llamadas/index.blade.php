@@ -59,10 +59,13 @@
         </tr>
         @endforeach
     </table>
-
+    @auth
+        @role('TeamLeader')       
     <div class="d-flex">
         {!! $llamadas->links() !!}
     </div>
+    @endrole
+    @endauth
 
 </div>
 @endsection

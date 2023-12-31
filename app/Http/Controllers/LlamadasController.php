@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreLlamadaRequest;
 use App\Http\Requests\UpdateLlamadaRequest;
 use App\Models\Llamada;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use App\Models\EmpresaCliente;
 
@@ -24,7 +25,17 @@ class LlamadasController extends Controller
      */
     public function index()
     {
-        $llamadas = Llamada::latest()->paginate(10);
+        $filters['column'] = 'interpreterID';
+        $filters['value'] = auth()->id();
+        if((Auth::user()->hasRole('TeamLeader')))
+        {
+            $llamadas = Llamada::latest()->paginate(10);
+        }
+        else{
+            
+            $llamadas = Llamada::select('*')
+                    ->where($filters['column'], $filters['value'])->get();
+        }
         foreach ($llamadas as $llamada) {
             $llamada->empresaClienteObject = EmpresaCliente::where('id', $llamada->empresaCliente)->first();
             $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
@@ -134,4 +145,6 @@ class LlamadasController extends Controller
         return redirect()->route('llamadas.index')
             ->withSuccess(__('Llamada eliminada correctamente.'));
     }
+
+    
 }

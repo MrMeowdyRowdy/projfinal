@@ -45,10 +45,13 @@
         </tr>
         @endforeach
     </table>
-
+    @auth
+        @role('TeamLeader')    
     <div class="d-flex">
         {!! $rcps->links() !!}
     </div>
+    @endrole
+    @endauth
 
 </div>
 @endsection

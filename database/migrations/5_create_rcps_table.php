@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('rcps', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('interpreterID');
-            $table->unsignedBigInteger('llamadaID');
+            $table->unsignedBigInteger('llamadaID')->unique();
             $table->unsignedBigInteger('tipo');
             $table->unsignedBigInteger('catastrofico');
             $table->foreign('interpreterID')->references('id')->on('users')->onDelete('cascade');
