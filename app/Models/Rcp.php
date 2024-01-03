@@ -12,6 +12,7 @@ class Rcp extends Model
     protected $fillable = [
         'interpreterID',
         'llamadaID',
+        'fecha',
         'tipo',
         'catastrofico',
         'mensaje'

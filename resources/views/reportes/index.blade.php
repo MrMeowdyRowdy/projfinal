@@ -204,18 +204,19 @@
     console.log(dataRcps)
     const dataRcp = {
         labels: labelsRcp,
-        datasets: [{
-            label: 'Llamadas con problemas',
-            data: dataRcps,
-            backgroundColor: '#ff0000',
-            hoverOffset: 4
-        },
-        {
-            label: 'Llamadas sin problemas',
-            data: datallams,
-            backgroundColor: '#36A2EB',
-            hoverOffset: 4
-        },
+        datasets: [
+            {
+                label: 'Llamadas sin problemas',
+                data: datallams,
+                backgroundColor: '#36A2EB',
+                hoverOffset: 4
+            }, {
+                label: 'Llamadas con problemas',
+                data: dataRcps,
+                backgroundColor: '#ff0000',
+                hoverOffset: 4
+            },
+
         ]
     };
     const configRcp = {
@@ -232,8 +233,8 @@
                 }
             },
         }
-        };
+    };
 
-        const rcpsChart = new Chart(ctxsRcp, configRcp);
+    const rcpsChart = new Chart(ctxsRcp, configRcp);
 </script>
 @endsection
