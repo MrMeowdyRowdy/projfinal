@@ -32,7 +32,7 @@
 
 
 
-    <section>
+    <section >
         <div>
             <canvas id="idiomasChart"></canvas>
             <a class="btn btn-primary" href="{{ route('reportes.porIdioma') }}">Filtrar por Idioma</a>
