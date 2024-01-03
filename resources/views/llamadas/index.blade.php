@@ -53,7 +53,7 @@
 
             </td>
             <td>
-                <a class="btn btn-primary btn-sm" href="{{ route('rcps.create', ['id'=>$llamada->id]) }}">RCP</a>
+                <a class="btn btn-primary btn-sm" href="{{ route('rcps.create', ['id'=>$llamada->id,'fecha'=>$llamada->fecha]) }}">RCP</a>
             </td>
 
         </tr>

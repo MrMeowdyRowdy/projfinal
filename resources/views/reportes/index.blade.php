@@ -28,9 +28,9 @@
     <div class="mt-2">
         @include('layouts.partials.messages')
     </div>
-    
-   
-    <a class="btn btn-primary" href="{{ route('reportes.conRcp') }}">Llamadas Reportadas</a>
+
+
+
 
     <section>
         <div>
@@ -52,6 +52,10 @@
         <div>
             <canvas id="sedesChart"></canvas>
             <a class="btn btn-primary" href="{{ route('reportes.porSede') }}">Filtrar por Sede</a>
+        </div>
+        <div>
+            <canvas id="rcpsChart"></canvas>
+            <a class="btn btn-primary" href="{{ route('reportes.conRcp') }}">Llamadas Reportadas</a>
         </div>
     </section>
 </div>
@@ -189,5 +193,47 @@
     };
 
     const sedesChart = new Chart(ctxsSed, configSed);
+
+    const llamadasRcps = @json($llamadasProblemas);
+    console.log(llamadasRcps);
+    const ctxsRcp = document.getElementById('rcpsChart').getContext('2d');
+    const labelsRcp = llamadasRcps.map(item => item.fecha);
+    const backgroundColorsRcp = Array.from({ length: llamadasRcps.length }, () => generateRandomColor());
+    const datallams = llamadasRcps.map(item => item.count);
+    const dataRcps = llamadasRcps.map(item => item.rcpCount);
+    console.log(dataRcps)
+    const dataRcp = {
+        labels: labelsRcp,
+        datasets: [{
+            label: 'Llamadas con problemas',
+            data: dataRcps,
+            backgroundColor: '#ff0000',
+            hoverOffset: 4
+        },
+        {
+            label: 'Llamadas sin problemas',
+            data: datallams,
+            backgroundColor: '#36A2EB',
+            hoverOffset: 4
+        },
+        ]
+    };
+    const configRcp = {
+        type: 'bar',
+        data: dataRcp,
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true
+                }
+            },
+        }
+        };
+
+        const rcpsChart = new Chart(ctxsRcp, configRcp);
 </script>
 @endsection

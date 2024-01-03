@@ -20,6 +20,15 @@
                 @endif
             </div>
             <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha</label>
+                <input value="{{ $fecha }}" type="date" class="form-control" name="fecha"
+                    placeholder="Id de la Llamada" readonly>
+
+                @if ($errors->has('fecha'))
+                <span class="text-danger text-left">{{ $errors->first('fecha') }}</span>
+                @endif
+            </div>
+            <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo de problema</label>
                 <select class="form-control" name="tipo" required>
                     <option value="">Elige el tipo de problema de llamada atendida</option>

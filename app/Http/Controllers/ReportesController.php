@@ -46,7 +46,7 @@ class ReportesController extends Controller
             $llamadasProblemas = $this->dashboardConProblemas();
         }
 
-
+        
         return view('reportes.index', [
             'llamadasLenguajes' => $llamadasLenguajes,
             'llamadasCategorias' => $llamadasCategorias,
@@ -219,31 +219,26 @@ class ReportesController extends Controller
         $filters['column'] = null;
         $filters['value'] = null;
         $llamadas = Llamada::select('fecha')->distinct()->whereDate('fecha', '>=', now()->subDays(7)->toDateString())
-        ->get();
-        $rcp = Rcp::select('created_at')->whereDate('created_at', '>=', now()->subDays(7)->toDateString())->get();
-        foreach($llamadas as $llamada)
-        {
-            $llamada->count = Llamada::select('id')
-            ->where('fecha',$llamada->fecha)
-            ->count();
-        }
-        dd($llamadas);
-        
-        ;;
+            ->get();
+
         if (!array_key_exists('dates', $filters)) {
 
-            $llamadas->count = Llamada::select('id')->count();
-            $llamadas->fecha = Llamada::select('id')->count();
-            $rcp = Rcp::select('id')->count();
+            foreach ($llamadas as $llamada) {
+                $llamada->count = Llamada::select('id')
+                    ->where('fecha', $llamada->fecha)
+                    ->count();
+                $llamada->rcpCount = Rcp::select('id')
+                    ->where('rcps.fecha', $llamada->fecha)
+                    ->count();
+            }
         } else {
-
-            $llamadas = Llamada::select('id')->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->count();
-            $rcp = Rcp::select('id')->whereBetween('created_at.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->count();
+            // $llamadas = Llamada::whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->count();    
+                $llamadas->count = Llamada::whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->count();
+                $llamadas->rcpCount = Rcp::whereBetween('rcps.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])
+                    ->count();
+            
         }
-        $llamadas=$llamadas-$rcp;
-        dd($llamadas,$rcp);
-        return (['llamadas' => $llamadas,
-                'rcp'=>$rcp]);
+        return ($llamadas);
     }
 
     /**

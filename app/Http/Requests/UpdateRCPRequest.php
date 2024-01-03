@@ -23,6 +23,7 @@ class UpdateRCPRequest extends FormRequest
     {
         return [
             'llamadaID' => 'required|integer',
+            'fecha' => 'required|date',
             'tipo' => 'required',
             'mensaje' => 'required',
             'catastrofico' => 'required'

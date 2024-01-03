@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('interpreterID');
             $table->unsignedBigInteger('llamadaID')->unique();
+            $table->date('fecha');
             $table->unsignedBigInteger('tipo');
             $table->unsignedBigInteger('catastrofico');
             $table->foreign('interpreterID')->references('id')->on('users')->onDelete('cascade');

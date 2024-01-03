@@ -48,10 +48,12 @@ class RcpsController extends Controller
      */
     public function create(Request $request)
     {
+        
         return view('rcps.create', [
             'tipoRcps' => TipoRcp::latest()->get(),
             'catastroficos' => Catastrofico::latest()->get(),
             'llamadaID' => $request['id'],
+            'fecha' => $request['fecha'],
         ]);
     }
 
@@ -67,7 +69,7 @@ class RcpsController extends Controller
     {
         //For demo purposes only. When creating rcp or inviting a rcp
         // you should create a generated random password and email it to the rcp
-        Rcp::create(array_merge($request->only('llamadaID', 'tipo', 'catastrofico','mensaje'), [
+        Rcp::create(array_merge($request->only('llamadaID', 'fecha', 'tipo', 'catastrofico','mensaje'), [
             'interpreterID' => auth()->id()
         ]));
         return redirect()->route('rcps.index')
