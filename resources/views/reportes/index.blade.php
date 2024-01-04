@@ -1,11 +1,14 @@
 @extends('layouts.app-master')
 
 @section('content')
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="SASS/dist/main.css">
 
-<h1 class="mb-3">Registro de Proveedores</h1>
-
-<div class="bg-light p-4 rounded">
-    <h1>Reporteria y busqueda</h1>
+<div class="bg-light p-4 rounded container">
+    <main>
+    <h1 >Reporteria y busqueda</h1>
     <div class="lead">
         Aquí podrás en un vistazo conocer las estadísticas de llamadas.
     </div>
@@ -28,32 +31,34 @@
     <div class="mt-2">
         @include('layouts.partials.messages')
     </div>
+    </main>
+    
 
 
 
 
-    <section >
-        <div>
+    <section class="container">
+        <div class="reporte">
             <canvas id="idiomasChart"></canvas>
             <a class="btn btn-primary" href="{{ route('reportes.porIdioma') }}">Filtrar por Idioma</a>
         </div>
-        <div>
+        <div class="reporte">
             <canvas id="categoriasChart"></canvas>
             <a class="btn btn-primary" href="{{ route('reportes.porCategoria') }}">Filtrar por Categoria</a>
         </div>
-        <div>
+        <div class="reporte">
             <canvas id="clientesChart"></canvas>
             <a class="btn btn-primary" href="{{ route('reportes.porCliente') }}">Filtrar por Cliente</a>
         </div>
-        <div>
+        <div class="reporte">
             <canvas id="proveedorsChart"></canvas>
             <a class="btn btn-primary" href="{{ route('reportes.porProveedor') }}">Filtrar por Proveedor</a>
         </div>
-        <div>
+        <div class="reporte">
             <canvas id="sedesChart"></canvas>
             <a class="btn btn-primary" href="{{ route('reportes.porSede') }}">Filtrar por Sede</a>
         </div>
-        <div>
+        <div class="reporte">
             <canvas id="rcpsChart"></canvas>
             <a class="btn btn-primary" href="{{ route('reportes.conRcp') }}">Llamadas Reportadas</a>
         </div>
