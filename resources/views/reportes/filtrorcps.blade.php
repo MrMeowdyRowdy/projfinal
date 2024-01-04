@@ -30,6 +30,10 @@
         @include('layouts.partials.messages')
     </div>
 
+    @foreach ($llamadas as $key => $llamada)
+    <p>El total de llamadas para "{{ $llamada['tipoUsado'] }}" es de {{ $llamada['llamadasRcpCount'] }}</p>
+    @endforeach
+
     <table class="table table-bordered">
         <tr>
             <th width="1%">ID Llamada</th>
@@ -40,6 +44,7 @@
             <th>Proveedor</th>
             <th>Lengua LEP</th>
             <th>Tipo</th>
+            <th>Catastrofico</th>
         </tr>
         @foreach ($llamadas as $key => $llamada)
         @foreach ($llamada['llamadasArray'] as $llamadaObject)
@@ -52,6 +57,7 @@
             <td>{{ $llamadaObject->proveedorObject->nombre }}</td>
             <td>{{ $llamadaObject->lenguaLEPObject->lengua }}</td>
             <td>{{ $llamadaObject->tipoObject->tipo }}</td>
+            <td>{{ $llamadaObject->catastroficoObject->catastrofico }}</td>
         </tr>
         @endforeach
         @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catastrofico;
 use App\Models\Categoria;
 use App\Models\EmpresaCliente;
 use App\Models\LenguaLEP;
@@ -587,9 +588,10 @@ class ReportesController extends Controller
     {
         // Llama base de datos y devuleve todos los objetos llamada sin filtros pero con relaciones
         if (!$filters) {
-            $llamadas = Llamada::select('llamadas.id', 'rcps.id as idRcp', 'llamadas.interpreterID', 'fecha', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo_rcps.id as tipo')
+            $llamadas = Llamada::select('llamadas.id', 'rcps.id as idRcp', 'llamadas.interpreterID', 'llamadas.fecha', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo_rcps.id as tipo', 'catastroficos.id as catastroficoID')
                 ->join('rcps', 'llamadas.id', '=', 'rcps.llamadaID')
                 ->join('tipo_rcps', 'rcps.tipo', '=', 'tipo_rcps.id')
+                ->join('catastroficos', 'rcps.catastrofico', '=', 'catastroficos.id')
                 ->get();
         }
 
@@ -598,17 +600,19 @@ class ReportesController extends Controller
             // consulta si hay filtros fecha
             if (!array_key_exists('dates', $filters)) {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 'column' => 'empresaCliente'  (columna bdd) y relaciones
-                $llamadas = Llamada::select('llamadas.id', 'rcps.id as idRcp', 'llamadas.interpreterID', 'fecha', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo_rcps.id as tipo')
+                $llamadas = Llamada::select('llamadas.id', 'rcps.id as idRcp', 'llamadas.interpreterID', 'llamadas.fecha', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo_rcps.id as tipo', 'catastroficos.id as catastroficoID')
                     ->join('rcps', 'llamadas.id', '=', 'rcps.llamadaID')
                     ->join('tipo_rcps', 'rcps.tipo', '=', 'tipo_rcps.id')
+                    ->join('catastroficos', 'rcps.catastrofico', '=', 'catastroficos.id')
                     ->where($filters['column'], $filters['value'])->get();
 
             } else {
                 // Llama base de datos y devuleve todos los objetos llamada dependiendo del filtro basado en la columna 
                 //'empresaCliente, fechas siendo columna ' created at y los filtros correspondiente y relaciones
-                $llamadas = Llamada::select('llamadas.id', 'rcps.id as idRcp', 'llamadas.interpreterID', 'fecha', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo_rcps.id as tipo')
+                $llamadas = Llamada::select('llamadas.id', 'rcps.id as idRcp', 'llamadas.interpreterID', 'llamadas.fecha', 'empresaCliente', 'proveedor', 'lenguaLEP', 'tipo_rcps.id as tipo', 'catastroficos.id as catastroficoID')
                     ->join('rcps', 'llamadas.id', '=', 'rcps.llamadaID')
                     ->join('tipo_rcps', 'rcps.tipo', '=', 'tipo_rcps.id')
+                    ->join('catastroficos', 'rcps.catastrofico', '=', 'catastroficos.id')
                     ->whereBetween('llamadas.fecha', [$filters['dates']['startdate'], $filters['dates']['enddate']])->get();
             }
         }
@@ -618,6 +622,7 @@ class ReportesController extends Controller
             $llamada->proveedorObject = Proveedor::where('id', $llamada->proveedor)->first();
             $llamada->lenguaLEPObject = LenguaLEP::where('id', $llamada->lenguaLEP)->first();
             $llamada->tipoObject = TipoRcp::where('id', $llamada->tipo)->first();
+            $llamada->catastroficoObject = Catastrofico::where('id', $llamada->catastroficoID)->first();
         }
 
         $llamadasAgrupadas = [];
@@ -630,9 +635,9 @@ class ReportesController extends Controller
                 $llamadasAgrupadas[$llamada->id]['llamadasArray'][] = $llamada;
             } else {
                 // Key doesn't exist, create a new entry
-                $llamadasAgrupadas[$llamada->empresaCliente] = [
+                $llamadasAgrupadas[$llamada->tipo] = [
                     'llamadasRcpCount' => 1,
-                    'IdUsado' => $llamada->id,
+                    'tipoUsado' => $llamada->tipoObject->tipo,
                     'llamadasArray' => [$llamada]
                 ];
             }
