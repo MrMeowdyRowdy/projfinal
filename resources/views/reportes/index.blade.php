@@ -33,10 +33,6 @@
     </div>
     </main>
     
-
-
-
-
     <section class="container">
         <div class="reporte">
             <canvas id="idiomasChart"></canvas>
