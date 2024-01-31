@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\ApisController;
 use App\Http\Controllers\EmpresaClientesController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\LlamadasController;
+use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\ProveedorsController;
 use App\Http\Controllers\RcpsController;
 use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SedesController;
 use App\Http\Controllers\TipoRcpsController;
 use App\Http\Controllers\UsersController;
@@ -146,9 +149,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             
         });
 
-
-
         Route::resource('roles', RolesController::class);
         Route::resource('permissions', PermissionsController::class);
+        Route::resource('apis', ApisController::class);
     });
 });

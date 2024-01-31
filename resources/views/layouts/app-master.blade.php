@@ -33,11 +33,11 @@
   <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet">
 </head>
 
-<body>
+<body> 
 
   @include('layouts.partials.navbar')
 
-  <main class="container">
+  <main class="container" >
     @yield('content')
   </main>
 
