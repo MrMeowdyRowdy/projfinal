@@ -13,6 +13,13 @@ use App\Http\Controllers\FiltrosController;
 
 class ReportesController extends Controller
 {
+    private DashboardsController $dashboardsController;
+    private FiltrosController $filtrosController;
+
+    public function __construct(DashboardsController $dashboardsController,FiltrosController $filtrosController){
+        $this->dashboardsController = $dashboardsController;
+        $this->filtrosController = $filtrosController;
+    }
     /**
      * Display all reportes
      * 
