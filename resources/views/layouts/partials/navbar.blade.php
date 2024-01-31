@@ -17,6 +17,7 @@
           <li><a href="{{ route('tipoRcps.index') }}" class="nav-link px-2 text-white">Tipo RCP</a></li>
           <li><a href="{{ route('sedes.index') }}" class="nav-link px-2 text-white">Sedes</a></li>
           <li><a href="{{ route('reportes.index') }}" class="nav-link px-2 text-white">Reportería</a></li>
+          <li><a href="{{ route('apis.index') }}" class="nav-link px-2 text-white">ApiShowcase</a></li>
           @endrole
           <li><a href="{{ route('rcps.index') }}" class="nav-link px-2 text-white">RCPs</a></li>
           <li><a href="{{ route('llamadas.index') }}" class="nav-link px-2 text-white">Llamadas</a></li>

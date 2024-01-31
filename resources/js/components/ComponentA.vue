@@ -13,7 +13,7 @@
             <th>Categoria</th>
         </thead>
         <tbody slot="body" slot-scope="{displayData}">
-            <tr v-for="(llamada, index) in llamadas" :key="`llamada-${index}`">
+            <tr v-for="(llamada, index) in filteredRows" :key="`llamada-${index}`">
 
                 <td>{{ llamada.id }}</td>
                 <td v-html="highlightMatches(llamada.sede)"></td>
@@ -47,14 +47,23 @@ export default {
     },
     computed: {
         filteredRows() {
-            return this.llamadas.filter(llamada => {
+            var variable =  this.llamadas.filter(llamada => {
+                const sede = llamada.sede.toLowerCase();
                 const nombre = llamada.nombre.toLowerCase();
+                const lengua = llamada.lengua.toLowerCase();
+                const categoria = llamada.categoria.toLowerCase();
                 const searchTerm = this.filter.toLowerCase();
 
                 return (
-                    nombre.includes(searchTerm)
+                    nombre.includes(searchTerm) || 
+                    sede.includes(searchTerm) ||
+                    lengua.includes(searchTerm) ||
+                    categoria.includes(searchTerm)
+
                 );
+            
             });
+            return variable;
         }
     },
     data() {
@@ -74,3 +83,32 @@ export default {
     }
 };
 </script>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #dddddd;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 25px;
+}
+</style>
