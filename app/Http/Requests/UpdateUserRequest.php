@@ -24,11 +24,11 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'nroDocIdentificacion' => 'required',
+            'nroDocIdentificacion' => 'required|unique',
             'sede' => 'required',
             'apellido' => 'required',
             'name' => 'required',
-            'tlfContacto' => 'required',
+            'tlfContacto' => 'required|unique',
             'email' => 'required|email:rfc,dns|unique:users,email',
             'emailRackspace' => 'required|email:rfc,dns|unique:users,email',
             'fullTime' => 'required',

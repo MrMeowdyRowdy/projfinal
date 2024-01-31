@@ -36,19 +36,19 @@ class ReportesController extends Controller
         }
 
         if ($filters) {
-            $llamadasLenguajes = (new DashboardsController)->dashboardLenguajes($filters);
-            $llamadasCategorias = (new DashboardsController)->dashboardCategoria($filters);
-            $llamadasClientes = (new DashboardsController)->dashboardCliente($filters);
-            $llamadasProveedors = (new DashboardsController)->dashboardProveedor($filters);
-            $llamadasSedes = (new DashboardsController)->dashboardSede($filters);
-            $llamadasProblemas = (new DashboardsController)->dashboardConProblemas($filters);
+            $llamadasLenguajes = $this->dashboardsController->dashboardLenguajes($filters);
+            $llamadasCategorias = $this->dashboardsController->dashboardCategoria($filters);
+            $llamadasClientes = $this->dashboardsController->dashboardCliente($filters);
+            $llamadasProveedors = $this->dashboardsController->dashboardProveedor($filters);
+            $llamadasSedes = $this->dashboardsController->dashboardSede($filters);
+            $llamadasProblemas = $this->dashboardsController->dashboardConProblemas($filters);
         } else {
-            $llamadasLenguajes = (new DashboardsController)->dashboardLenguajes();
-            $llamadasCategorias = (new DashboardsController)->dashboardCategoria();
-            $llamadasClientes = (new DashboardsController)->dashboardCliente();
-            $llamadasProveedors = (new DashboardsController)->dashboardProveedor();
-            $llamadasSedes = (new DashboardsController)->dashboardSede();
-            $llamadasProblemas = (new DashboardsController)->dashboardConProblemas();
+            $llamadasLenguajes = $this->dashboardsController->dashboardLenguajes();
+            $llamadasCategorias = $this->dashboardsController->dashboardCategoria();
+            $llamadasClientes = $this->dashboardsController->dashboardCliente();
+            $llamadasProveedors = $this->dashboardsController->dashboardProveedor();
+            $llamadasSedes = $this->dashboardsController->dashboardSede();
+            $llamadasProblemas = $this->dashboardsController->dashboardConProblemas();
         }
 
 
@@ -81,9 +81,9 @@ class ReportesController extends Controller
 
 
         if ($filters) {
-            $llamadas = (new FiltrosController)->filtrarIdiomas($filters);
+            $llamadas = $this->filtrosController->filtrarIdiomas($filters);
         } else {
-            $llamadas = (new FiltrosController)->filtrarIdiomas();
+            $llamadas = $this->filtrosController->filtrarIdiomas();
         }
         return view('reportes.filtrosidioma', [
             'llamadas' => $llamadas,
@@ -105,9 +105,9 @@ class ReportesController extends Controller
 
 
         if ($filters) {
-            $llamadas = (new FiltrosController)->filtrarProveedor($filters);
+            $llamadas = $this->filtrosController->filtrarProveedor($filters);
         } else {
-            $llamadas = (new FiltrosController)->filtrarProveedor();
+            $llamadas = $this->filtrosController->filtrarProveedor();
         }
 
         return view('reportes.filtrosproveedor', [
@@ -130,9 +130,9 @@ class ReportesController extends Controller
 
 
         if ($filters) {
-            $llamadas = (new FiltrosController)->filtrarTipo($filters);
+            $llamadas = $this->filtrosController->filtrarTipo($filters);
         } else {
-            $llamadas = (new FiltrosController)->filtrarTipo();
+            $llamadas = $this->filtrosController->filtrarTipo();
         }
 
         return view('reportes.filtrostipo', [
@@ -154,9 +154,9 @@ class ReportesController extends Controller
         }
 
         if ($filters) {
-            $llamadas = (new FiltrosController)->filtrarCliente($filters);
+            $llamadas = $this->filtrosController->filtrarCliente($filters);
         } else {
-            $llamadas = (new FiltrosController)->filtrarCliente();
+            $llamadas = $this->filtrosController->filtrarCliente();
         }
 
         return view('reportes.filtroscliente', [
@@ -176,9 +176,9 @@ class ReportesController extends Controller
         }
 
         if ($filters) {
-            $llamadas = (new FiltrosController)->filtrarLlamadasRcp($filters);
+            $llamadas = $this->filtrosController->filtrarLlamadasRcp($filters);
         } else {
-            $llamadas = (new FiltrosController)->filtrarLlamadasRcp();
+            $llamadas = $this->filtrosController->filtrarLlamadasRcp();
         }
 
         return view('reportes.filtrorcps', [
@@ -200,9 +200,9 @@ class ReportesController extends Controller
 
 
         if ($filters) {
-            $llamadas = (new FiltrosController)->filtrarSede($filters);
+            $llamadas = $this->filtrosController->filtrarSede($filters);
         } else {
-            $llamadas = (new FiltrosController)->filtrarSede();
+            $llamadas = $this->filtrosController->filtrarSede();
         }
 
         return view('reportes.filtrosede', [
